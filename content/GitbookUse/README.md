@@ -16,5 +16,5 @@
 
 - #### 配置文件
 
-  可以在 **content/book.json** 添加插件，然后运行 **gitbook install** 即可
+  可以在 **content/book.json** 添加插件，然后运行 **gitbook install** 即可。
 
