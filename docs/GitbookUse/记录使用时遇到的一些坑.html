@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>test · GitBook</title>
+        <title>记录使用时遇到的一些坑 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -61,8 +61,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="配置文件.html" />
     
-    <link rel="prev" href="./" />
+    
+    <link rel="prev" href="常用的插件.html" />
     
 
     </head>
@@ -109,7 +111,7 @@
                 <a href="./">
             
                     
-                    Gitbook
+                    GitbookUse
             
                 </a>
             
@@ -118,12 +120,70 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.2.1" data-path="test.html">
+        <li class="chapter " data-level="1.2.1" data-path="常用的插件.html">
             
-                <a href="test.html">
+                <a href="常用的插件.html">
             
                     
-                    test
+                    常用的插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.2" data-path="记录使用时遇到的一些坑.html">
+            
+                <a href="记录使用时遇到的一些坑.html">
+            
+                    
+                    记录使用时遇到的一些坑
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="配置文件.html">
+            
+                <a href="配置文件.html">
+            
+                    
+                    配置文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../TypeScript/">
+            
+                <a href="../TypeScript/">
+            
+                    
+                    TypeScript
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../TypeScript/test.html">
+            
+                <a href="../TypeScript/test.html">
+            
+                    
+                    Test
             
                 </a>
             
@@ -166,7 +226,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >test</a>
+        <a href=".." >记录使用时遇到的一些坑</a>
     </h1>
 </div>
 
@@ -181,7 +241,9 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p>Test</p>
+                                <h1 id="&#x8BB0;&#x5F55;&#x4F7F;&#x7528;&#x65F6;&#x9047;&#x5230;&#x7684;&#x4E00;&#x4E9B;&#x5751;">&#x8BB0;&#x5F55;&#x4F7F;&#x7528;&#x65F6;&#x9047;&#x5230;&#x7684;&#x4E00;&#x4E9B;&#x5751;</h1>
+<h3 id="gitbook-build-&#x62A5;&#x9519;&#xFF1A;typeerror-cbapply-is-not-a-function">gitbook build &#x62A5;&#x9519;&#xFF1A;TypeError: cb.apply is not a function</h3>
+<p>node &#x7248;&#x672C;&#x95EE;&#x9898;&#xFF0C;&#x901A;&#x8FC7;&#x5B89;&#x88C5; nvm &#x6216;&#x8005; n &#x6765;&#x66F4;&#x6539; node &#x7248;&#x672C;&#xFF0C;&#x4E2A;&#x4EBA;&#x76EE;&#x524D;&#x4F7F;&#x7528;&#x7684;&#x662F; v12.20.1</p>
 
                                 
                                 </section>
@@ -209,10 +271,14 @@
 
             
                 
-                <a href="./" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Gitbook">
+                <a href="常用的插件.html" class="navigation navigation-prev " aria-label="Previous page: 常用的插件">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="配置文件.html" class="navigation navigation-next " aria-label="Next page: 配置文件">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -221,7 +287,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"test","level":"1.2.1","depth":2,"previous":{"title":"Gitbook","level":"1.2","depth":1,"path":"GitbookUse/README.md","ref":"GitbookUse/README.md","articles":[{"title":"test","level":"1.2.1","depth":2,"path":"GitbookUse/test.md","ref":"GitbookUse/test.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters"],"pluginsConfig":{"expandable-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"GitbookUse/test.md","mtime":"2021-02-19T01:52:48.901Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-19T10:26:50.960Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"记录使用时遇到的一些坑","level":"1.2.2","depth":2,"next":{"title":"配置文件","level":"1.2.3","depth":2,"path":"GitbookUse/配置文件.md","ref":"GitbookUse/配置文件.md","articles":[]},"previous":{"title":"常用的插件","level":"1.2.1","depth":2,"path":"GitbookUse/常用的插件.md","ref":"GitbookUse/常用的插件.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["gesummary","expandable-chapters"],"pluginsConfig":{"gesummary":{},"expandable-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"GitbookUse/记录使用时遇到的一些坑.md","mtime":"2021-02-20T02:13:00.534Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-20T07:37:49.338Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
