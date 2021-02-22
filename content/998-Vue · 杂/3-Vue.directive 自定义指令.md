@@ -65,7 +65,7 @@ var vm=new Vue({
 
 效果：*（ 由于生命周期所以第二行没改变颜色）*
 
-![img](../../img/vue-directive.png)
+![img](../img/vue-directive.png)
 
 
 
