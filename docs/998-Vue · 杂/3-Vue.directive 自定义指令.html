@@ -1,0 +1,623 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Vue.Directive 自定义指令 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="4-vue的this.$refs 打印为undefined.html" />
+    
+    
+    <link rel="prev" href="2-vue computed和watch的区别.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../2-TypeScript/">
+            
+                <a href="../2-TypeScript/">
+            
+                    
+                    TypeScript
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../2-TypeScript/test.html">
+            
+                <a href="../2-TypeScript/test.html">
+            
+                    
+                    Test
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../500-GitbookUse/">
+            
+                <a href="../500-GitbookUse/">
+            
+                    
+                    GitbookUse
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../500-GitbookUse/常用的插件.html">
+            
+                <a href="../500-GitbookUse/常用的插件.html">
+            
+                    
+                    常用的插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../500-GitbookUse/记录使用时遇到的一些坑.html">
+            
+                <a href="../500-GitbookUse/记录使用时遇到的一些坑.html">
+            
+                    
+                    记录使用时遇到的一些坑
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../500-GitbookUse/配置文件.html">
+            
+                <a href="../500-GitbookUse/配置文件.html">
+            
+                    
+                    配置文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Vue · 杂
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="1-Vue目录.html">
+            
+                <a href="1-Vue目录.html">
+            
+                    
+                    Vue目录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="10-时间戳转化为年 月 日 时 分 秒.html">
+            
+                <a href="10-时间戳转化为年 月 日 时 分 秒.html">
+            
+                    
+                    时间戳转化为年 月 日 时 分 秒
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="2-vue computed和watch的区别.html">
+            
+                <a href="2-vue computed和watch的区别.html">
+            
+                    
+                    Vue Computed和Watch的区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.4" data-path="3-Vue.directive 自定义指令.html">
+            
+                <a href="3-Vue.directive 自定义指令.html">
+            
+                    
+                    Vue.Directive 自定义指令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="4-vue的this.$refs 打印为undefined.html">
+            
+                <a href="4-vue的this.$refs 打印为undefined.html">
+            
+                    
+                    Vue的This.$Refs 打印为Undefined
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../999-杂/">
+            
+                <a href="../999-杂/">
+            
+                    
+                    杂
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../999-杂/1-js获取当前时间.html">
+            
+                <a href="../999-杂/1-js获取当前时间.html">
+            
+                    
+                    Js获取当前时间
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../999-杂/10-for of.html">
+            
+                <a href="../999-杂/10-for of.html">
+            
+                    
+                    For Of
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../999-杂/11-ES6的小笔记.html">
+            
+                <a href="../999-杂/11-ES6的小笔记.html">
+            
+                    
+                    ES6的小笔记
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../999-杂/2-js函数参数默认值设置.html">
+            
+                <a href="../999-杂/2-js函数参数默认值设置.html">
+            
+                    
+                    Js函数参数默认值设置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../999-杂/3-价格格式化，补万补亿.html">
+            
+                <a href="../999-杂/3-价格格式化，补万补亿.html">
+            
+                    
+                    价格格式化，补万补亿
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../999-杂/4-验证变量格式.html">
+            
+                <a href="../999-杂/4-验证变量格式.html">
+            
+                    
+                    验证变量格式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../999-杂/5-判断对象是否有对应字段.html">
+            
+                <a href="../999-杂/5-判断对象是否有对应字段.html">
+            
+                    
+                    判断对象是否有对应字段
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="../999-杂/6-正则.html">
+            
+                <a href="../999-杂/6-正则.html">
+            
+                    
+                    正则
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="../999-杂/7-js元素的各种宽高.html">
+            
+                <a href="../999-杂/7-js元素的各种宽高.html">
+            
+                    
+                    Js元素的各种宽高
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="../999-杂/8-textarea换行，输出不换行.html">
+            
+                <a href="../999-杂/8-textarea换行，输出不换行.html">
+            
+                    
+                    Textarea换行，输出不换行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11" data-path="../999-杂/9-两个字符串比较并高光.html">
+            
+                <a href="../999-杂/9-两个字符串比较并高光.html">
+            
+                    
+                    两个字符串比较并高光
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Vue.Directive 自定义指令</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="vuedirective-&#x81EA;&#x5B9A;&#x4E49;&#x6307;&#x4EE4;">Vue.directive &#x81EA;&#x5B9A;&#x4E49;&#x6307;&#x4EE4;</h1>
+<p>&#x5982;&#x679C;&#x6307;&#x4EE4;&#x9700;&#x8981;&#x591A;&#x4E2A;&#x503C;&#xFF0C;&#x53EF;&#x4EE5;&#x4F20;&#x5165;&#x4E00;&#x4E2A; JavaScript &#x5BF9;&#x8C61;&#x5B57;&#x9762;&#x91CF;&#x3002;</p>
+<p><strong>&#x8BB0;&#x4F4F;&#xFF0C;&#x6307;&#x4EE4;&#x51FD;&#x6570;&#x80FD;&#x591F;&#x63A5;&#x53D7;&#x6240;&#x6709;&#x5408;&#x6CD5;&#x7684; JavaScript &#x8868;&#x8FBE;&#x5F0F;&#x3002;</strong></p>
+<p><strong># &#x81EA;&#x5B9A;&#x4E49;&#x6307;&#x4EE4;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#xFF1A;</strong></p>
+<ol>
+<li>bind:&#x53EA;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#xFF0C;&#x6307;&#x4EE4;&#x7B2C;&#x4E00;&#x6B21;&#x7ED1;&#x5B9A;&#x5230;&#x5143;&#x7D20;&#x65F6;&#x8C03;&#x7528;&#xFF0C;&#x7528;&#x8FD9;&#x4E2A;&#x94A9;&#x5B50;&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x7ED1;&#x5B9A;&#x65F6;&#x6267;&#x884C;&#x4E00;&#x6B21;&#x7684;&#x521D;&#x59CB;&#x5316;&#x52A8;&#x4F5C;&#x3002;</li>
+<li>inserted:&#x88AB;&#x7ED1;&#x5B9A;&#x5143;&#x7D20;&#x63D2;&#x5165;&#x7236;&#x8282;&#x70B9;&#x65F6;&#x8C03;&#x7528;&#xFF08;&#x7236;&#x8282;&#x70B9;&#x5B58;&#x5728;&#x5373;&#x53EF;&#x8C03;&#x7528;&#xFF0C;&#x4E0D;&#x5FC5;&#x5B58;&#x5728;&#x4E8E;document&#x4E2D;&#xFF09;&#x3002;</li>
+<li>update:&#x88AB;&#x7ED1;&#x5B9A;&#x4E8E;&#x5143;&#x7D20;&#x6240;&#x5728;&#x7684;&#x6A21;&#x677F;&#x66F4;&#x65B0;&#x65F6;&#x8C03;&#x7528;&#xFF0C;&#x800C;&#x65E0;&#x8BBA;&#x7ED1;&#x5B9A;&#x503C;&#x662F;&#x5426;&#x53D8;&#x5316;&#x3002;&#x901A;&#x8FC7;&#x6BD4;&#x8F83;&#x66F4;&#x65B0;&#x524D;&#x540E;&#x7684;&#x7ED1;&#x5B9A;&#x503C;&#xFF0C;&#x53EF;&#x4EE5;&#x5FFD;&#x7565;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x6A21;&#x677F;&#x66F4;&#x65B0;&#x3002;</li>
+<li>componentUpdated:&#x88AB;&#x7ED1;&#x5B9A;&#x5143;&#x7D20;&#x6240;&#x5728;&#x6A21;&#x677F;&#x5B8C;&#x6210;&#x4E00;&#x6B21;&#x66F4;&#x65B0;&#x5468;&#x671F;&#x65F6;&#x8C03;&#x7528;&#x3002;</li>
+<li>unbind:&#x53EA;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#xFF0C;&#x6307;&#x4EE4;&#x4E0E;&#x5143;&#x7D20;&#x89E3;&#x7ED1;&#x65F6;&#x8C03;&#x7528;&#x3002;</li>
+</ol>
+<p><strong>### example ###</strong></p>
+<p>&#x89C6;&#x56FE;&#x5C42;</p>
+<pre><code class="lang-html">color:<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;color&quot;</span>&gt;</span>
+opacity:<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;opacity&quot;</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-change-color</span>=<span class="hljs-string">&quot;color&quot;</span>&gt;</span>COLOR / test for v-directive<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-change-style</span>=<span class="hljs-string">&quot;{ color:color, opacity:opacity }&quot;</span>&gt;</span>STYLE / test for v-directive<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<p>&#x903B;&#x8F91;&#x5C42;</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">/* 
+                el: &#x6307;&#x4EE4;&#x6240;&#x7ED1;&#x5B9A;&#x7684;&#x5143;&#x7D20;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x76F4;&#x63A5;&#x64CD;&#x4F5C;DOM
+                binding: &#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x5305;&#x542B;&#x8BE5;&#x6307;&#x4EE4;&#x7684;&#x5F88;&#x591A;&#x4FE1;&#x606F;
+                vnode: Vue&#x7F16;&#x8BD1;&#x751F;&#x6210;&#x7684;&#x865A;&#x62DF;&#x8282;&#x70B9; 
+*/</span>
+
+<span class="hljs-comment">// &#x5168;&#x5C40;&#x5B9A;&#x4E49;&#x81EA;&#x5B9A;&#x4E49;&#x547D;&#x4EE4;</span>
+Vue.directive(<span class="hljs-string">&apos;change-color&apos;</span>,{
+   inserted: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">el,binding,vnode</span>)</span>{
+      el.style = <span class="hljs-string">&apos;color:&apos;</span> + binding.value;
+    }
+})
+
+Vue.directive(<span class="hljs-string">&apos;change-style&apos;</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">el,binding,vnode</span>)</span>{
+  el.style = 
+    <span class="hljs-string">&apos;color:&apos;</span> + binding.value.color + <span class="hljs-string">&apos;;&apos;</span> +
+    <span class="hljs-string">&apos;opacity:&apos;</span>+ binding.value.opacity;
+})
+
+<span class="hljs-comment">// &#x521B;&#x5EFA;vue&#x5B9E;&#x4F8B;</span>
+<span class="hljs-keyword">var</span> vm=<span class="hljs-keyword">new</span> Vue({
+  el: <span class="hljs-string">&apos;#app&apos;</span>,
+  data:{  <span class="hljs-comment">//&#x6570;&#x636E;</span>
+    color: <span class="hljs-string">&apos;blue&apos;</span>,   <span class="hljs-comment">// &#x989C;&#x8272;</span>
+    opacity: <span class="hljs-number">1</span>  <span class="hljs-comment">// &#x900F;&#x660E;&#x5EA6;</span>
+  },
+})
+</code></pre>
+<p>&#x6548;&#x679C;&#xFF1A;<em>&#xFF08; &#x7531;&#x4E8E;&#x751F;&#x547D;&#x5468;&#x671F;&#x6240;&#x4EE5;&#x7B2C;&#x4E8C;&#x884C;&#x6CA1;&#x6539;&#x53D8;&#x989C;&#x8272;&#xFF09;</em></p>
+<p><img src="../../img/vue-directive.png" alt="img"></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="2-vue computed和watch的区别.html" class="navigation navigation-prev " aria-label="Previous page: Vue Computed和Watch的区别">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="4-vue的this.$refs 打印为undefined.html" class="navigation navigation-next " aria-label="Next page: Vue的This.$Refs 打印为Undefined">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Vue.Directive 自定义指令","level":"1.4.4","depth":2,"next":{"title":"Vue的This.$Refs 打印为Undefined","level":"1.4.5","depth":2,"path":"998-Vue · 杂/4-vue的this.$refs 打印为undefined.md","ref":"998-Vue · 杂/4-vue的this.$refs 打印为undefined.md","articles":[]},"previous":{"title":"Vue Computed和Watch的区别","level":"1.4.3","depth":2,"path":"998-Vue · 杂/2-vue computed和watch的区别.md","ref":"998-Vue · 杂/2-vue computed和watch的区别.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["gesummary","expandable-chapters"],"pluginsConfig":{"gesummary":{},"expandable-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"998-Vue · 杂/3-Vue.directive 自定义指令.md","mtime":"2021-02-22T03:25:23.737Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-22T03:25:55.396Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
