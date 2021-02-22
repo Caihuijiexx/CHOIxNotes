@@ -1,0 +1,767 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Vue Computed和Watch的区别 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="3-Vue.directive 自定义指令.html" />
+    
+    
+    <link rel="prev" href="1-Vue目录.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../2-TypeScript/">
+            
+                <a href="../2-TypeScript/">
+            
+                    
+                    TypeScript
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../2-TypeScript/test.html">
+            
+                <a href="../2-TypeScript/test.html">
+            
+                    
+                    Test
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Vue · 杂
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="1-Vue目录.html">
+            
+                <a href="1-Vue目录.html">
+            
+                    
+                    Vue目录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.2" data-path="2-vue computed和watch的区别.html">
+            
+                <a href="2-vue computed和watch的区别.html">
+            
+                    
+                    Vue Computed和Watch的区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="3-Vue.directive 自定义指令.html">
+            
+                <a href="3-Vue.directive 自定义指令.html">
+            
+                    
+                    Vue.Directive 自定义指令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="4-Vue.extend 构造器的延伸.html">
+            
+                <a href="4-Vue.extend 构造器的延伸.html">
+            
+                    
+                    Vue.Extend 构造器的延伸
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="5-Vue.set.html">
+            
+                <a href="5-Vue.set.html">
+            
+                    
+                    Vue.Set
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="6-Vue的生命周期.html">
+            
+                <a href="6-Vue的生命周期.html">
+            
+                    
+                    Vue的生命周期
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="7-Vue.component和component标签.html">
+            
+                <a href="7-Vue.component和component标签.html">
+            
+                    
+                    Vue.Component和Component标签
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8" data-path="8--vue的this.$refs 打印为undefined.html">
+            
+                <a href="8--vue的this.$refs 打印为undefined.html">
+            
+                    
+                     Vue的This.$Refs 打印为Undefined
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.9" data-path="9--时间戳转化为年 月 日 时 分 秒.html">
+            
+                <a href="9--时间戳转化为年 月 日 时 分 秒.html">
+            
+                    
+                     时间戳转化为年 月 日 时 分 秒
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../998-杂/">
+            
+                <a href="../998-杂/">
+            
+                    
+                    杂
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../998-杂/1-js获取当前时间.html">
+            
+                <a href="../998-杂/1-js获取当前时间.html">
+            
+                    
+                    Js获取当前时间
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../998-杂/10-for of.html">
+            
+                <a href="../998-杂/10-for of.html">
+            
+                    
+                    For Of
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../998-杂/11-ES6的小笔记.html">
+            
+                <a href="../998-杂/11-ES6的小笔记.html">
+            
+                    
+                    ES6的小笔记
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../998-杂/2-js函数参数默认值设置.html">
+            
+                <a href="../998-杂/2-js函数参数默认值设置.html">
+            
+                    
+                    Js函数参数默认值设置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../998-杂/3-价格格式化，补万补亿.html">
+            
+                <a href="../998-杂/3-价格格式化，补万补亿.html">
+            
+                    
+                    价格格式化，补万补亿
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../998-杂/4-验证变量格式.html">
+            
+                <a href="../998-杂/4-验证变量格式.html">
+            
+                    
+                    验证变量格式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../998-杂/5-判断对象是否有对应字段.html">
+            
+                <a href="../998-杂/5-判断对象是否有对应字段.html">
+            
+                    
+                    判断对象是否有对应字段
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="../998-杂/6-正则.html">
+            
+                <a href="../998-杂/6-正则.html">
+            
+                    
+                    正则
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="../998-杂/7-js元素的各种宽高.html">
+            
+                <a href="../998-杂/7-js元素的各种宽高.html">
+            
+                    
+                    Js元素的各种宽高
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.10" data-path="../998-杂/8-textarea换行，输出不换行.html">
+            
+                <a href="../998-杂/8-textarea换行，输出不换行.html">
+            
+                    
+                    Textarea换行，输出不换行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.11" data-path="../998-杂/9-两个字符串比较并高光.html">
+            
+                <a href="../998-杂/9-两个字符串比较并高光.html">
+            
+                    
+                    两个字符串比较并高光
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../999-GitbookUse/">
+            
+                <a href="../999-GitbookUse/">
+            
+                    
+                    GitbookUse
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../999-GitbookUse/常用的插件.html">
+            
+                <a href="../999-GitbookUse/常用的插件.html">
+            
+                    
+                    常用的插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../999-GitbookUse/记录使用时遇到的一些坑.html">
+            
+                <a href="../999-GitbookUse/记录使用时遇到的一些坑.html">
+            
+                    
+                    记录使用时遇到的一些坑
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../999-GitbookUse/配置文件.html">
+            
+                <a href="../999-GitbookUse/配置文件.html">
+            
+                    
+                    配置文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Vue Computed和Watch的区别</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="vue-computed&#x548C;watch&#x7684;&#x533A;&#x522B;">Vue computed&#x548C;watch&#x7684;&#x533A;&#x522B;</h1>
+<blockquote>
+<h6 id="computed-&#x8BA1;&#x7B97;&#x5C5E;&#x6027;&#xFF0C;watch&#xFF1A;&#x4FA6;&#x542C;&#x5C5E;&#x6027;">computed: &#x8BA1;&#x7B97;&#x5C5E;&#x6027;&#xFF0C;watch&#xFF1A;&#x4FA6;&#x542C;&#x5C5E;&#x6027;</h6>
+</blockquote>
+<p>&#xB7;</p>
+<ul>
+<li><h4 id="computed-&#x6570;&#x591A;&#x4E2A;&#x53D8;&#x91CF;&#x4E2D;&#x7684;&#x67D0;&#x4E00;&#x4E2A;&#x503C;&#x53D1;&#x751F;&#x4E86;&#x53D8;&#x5316;&#xFF0C;&#x76D1;&#x63A7;&#x7684;&#x8FD9;&#x4E2A;&#x503C;&#x4E5F;&#x4F1A;&#x53D8;&#x5316;&#x3002;">computed: &#x6570;&#x591A;&#x4E2A;&#x53D8;&#x91CF;&#x4E2D;&#x7684;&#x67D0;&#x4E00;&#x4E2A;&#x503C;&#x53D1;&#x751F;&#x4E86;&#x53D8;&#x5316;&#xFF0C;&#x76D1;&#x63A7;&#x7684;&#x8FD9;&#x4E2A;&#x503C;&#x4E5F;&#x4F1A;&#x53D8;&#x5316;&#x3002;</h4>
+</li>
+</ul>
+<blockquote>
+<p>&#x201C;<em>&#x8D2D;&#x7269;&#x5217;&#x8868;&#xFF0C;&#x6570;&#x91CF;&#x5355;&#x4EF7;&#x603B;&#x91D1;&#x989D;&#xFF0C;&#x5F53;&#x524D;&#x4E8C;&#x8005;&#x53D8;&#x5316;&#x65F6;&#xFF0C;&#x603B;&#x91D1;&#x989D;&#x4F1A;&#x53D8;&#x5316;&#x3002;</em>&#x201C;</p>
+</blockquote>
+<pre><code class="lang-javascript">data:{
+    amount: <span class="hljs-string">&apos;&apos;</span>,    <span class="hljs-comment">// &#x6570;&#x91CF;</span>
+    unit_price: <span class="hljs-string">&apos;&apos;</span>,    <span class="hljs-comment">// &#x5355;&#x4EF7;</span>
+},
+computed:{
+    <span class="hljs-comment">//    &#x603B;&#x4EF7;</span>
+total_price: {
+    <span class="hljs-comment">// getter</span>
+  get: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.amount * <span class="hljs-keyword">this</span>.unit_price
+  },
+  <span class="hljs-comment">// setter</span>
+  set: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">newValue</span>)</span>{
+            <span class="hljs-comment">// &#x8FD9;&#x91CC;&#x53EF;&#x4EE5;&#x5904;&#x7406;&#x8BE5;&#x76D1;&#x63A7;&#x7684;&#x503C;</span>
+        newValue = newValue.replace(<span class="hljs-regexp">/[^\d.]/g</span>,<span class="hljs-string">&apos;&apos;</span>)
+         <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.amount != <span class="hljs-number">0</span> &amp; <span class="hljs-keyword">this</span>.unit_price != <span class="hljs-number">0</span> &amp; newValue != <span class="hljs-number">0</span> ) {
+          <span class="hljs-keyword">this</span>.amount = newValue / <span class="hljs-keyword">this</span>.unit_price;
+          <span class="hljs-keyword">this</span>.unit_price = newValue / <span class="hljs-keyword">this</span>.amount;
+      } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(newValue == <span class="hljs-string">&apos;&apos;</span> | newValue == <span class="hljs-number">0</span>) {
+          <span class="hljs-keyword">this</span>.amount = <span class="hljs-number">0</span>;
+          <span class="hljs-keyword">this</span>.unit_price = <span class="hljs-number">0</span>;
+      }
+  }
+}
+}
+</code></pre>
+<p>&#xB7;</p>
+<ul>
+<li><h4 id="watch-&#x76D1;&#x63A7;vue&#x5B9E;&#x4F8B;&#x7684;&#x53D8;&#x5316;&#xFF0C;&#x4E00;&#x822C;&#x76D1;&#x63A7;&#x8DEF;&#x7531;&#xFF0C;input&#x8F93;&#x5165;&#x503C;&#x7684;&#x7279;&#x6B8A;&#x5904;&#x7406;&#xFF0C;&#x9002;&#x5408;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x5F71;&#x54CD;&#x591A;&#x4E2A;&#x6570;&#x636E;&#x3002;">watch: &#x76D1;&#x63A7;vue&#x5B9E;&#x4F8B;&#x7684;&#x53D8;&#x5316;&#xFF0C;&#x4E00;&#x822C;&#x76D1;&#x63A7;&#x8DEF;&#x7531;&#xFF0C;input&#x8F93;&#x5165;&#x503C;&#x7684;&#x7279;&#x6B8A;&#x5904;&#x7406;&#xFF0C;&#x9002;&#x5408;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x5F71;&#x54CD;&#x591A;&#x4E2A;&#x6570;&#x636E;&#x3002;</h4>
+</li>
+</ul>
+<blockquote>
+<p>&#x201C;<em>&#x5F53;&#x8F93;&#x5165;&#x6846;&#x8F93;&#x5165;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x8F93;&#x5165;&#x503C;&#x6309;&#x5BF9;&#x5E94;&#x7684;&#x6B63;&#x5219;&#x7279;&#x6B8A;&#x5904;&#x7406;&#x3002;</em>&#x201C;</p>
+</blockquote>
+<pre><code class="lang-javascript">watch: {
+amount: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">val</span>)</span>{
+    <span class="hljs-keyword">this</span>.amount = val.toString().replace(<span class="hljs-regexp">/[^\d.]/g</span>,<span class="hljs-string">&apos;&apos;</span>)
+},
+unit_price: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">val</span>)</span>{
+    <span class="hljs-keyword">this</span>.unit_price = val.toString().replace(<span class="hljs-regexp">/[^\d.]/g</span>,<span class="hljs-string">&apos;&apos;</span>)
+}
+},
+</code></pre>
+<p>&#x201C;<em>&#x5F53;&#x524D;&#x8DEF;&#x7531;&#x53D8;&#x5316;&#x65F6;&#xFF0C;&#x6267;&#x884C;&#x5BF9;&#x5E94;&#x7684;&#x65B9;&#x6CD5;&#x3002;</em>&#x201C;</p>
+<pre><code class="lang-javascript">watch: {
+<span class="hljs-string">&apos;$route&apos;</span> (to, <span class="hljs-keyword">from</span>) {
+<span class="hljs-comment">// &#x76D1;&#x63A7;&#x8DEF;&#x7531;&#x53D8;&#x5316;</span>
+    <span class="hljs-comment">// to &#x76EE;&#x6807;&#x8DEF;&#x7531;</span>
+<span class="hljs-comment">// from &#x8D77;&#x70B9;&#x8DEF;&#x7531;</span>
+}
+}
+</code></pre>
+<p>&#xB7;</p>
+<ul>
+<li><h4 id="handler&#x65B9;&#x6CD5;&#x548C;immediate&#x5C5E;&#x6027;">handler&#x65B9;&#x6CD5;&#x548C;immediate&#x5C5E;&#x6027;</h4>
+</li>
+</ul>
+<p>&#xFF08;&#x603B;&#x7ED3;&#x5C31;&#x662F;&#xFF0C;handler&#x662F;&#x9ED8;&#x8BA4;&#x65B9;&#x6CD5;&#xFF0C;immediate&#x63A7;&#x5236;&#x662F;&#x5426;&#x4E00;&#x5F00;&#x59CB;&#x6267;&#x884C;&#xFF09;</p>
+<p>&#x8FD9;&#x91CC; watch &#x7684;&#x4E00;&#x4E2A;&#x7279;&#x70B9;&#x662F;&#xFF0C;&#x6700;&#x521D;&#x7ED1;&#x5B9A;&#x7684;&#x65F6;&#x5019;&#x662F;&#x4E0D;&#x4F1A;&#x6267;&#x884C;&#x7684;&#xFF0C;&#x8981;&#x7B49;&#x5230; <code>firstName</code> &#x6539;&#x53D8;&#x65F6;&#x624D;&#x6267;&#x884C;&#x76D1;&#x542C;&#x8BA1;&#x7B97;&#x3002;&#x90A3;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x4E00;&#x5F00;&#x59CB;&#x5C31;&#x8BA9;&#x4ED6;&#x6700;&#x521D;&#x7ED1;&#x5B9A;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x6267;&#x884C;&#x6539;&#x600E;&#x4E48;&#x529E;&#x5462;&#xFF1F;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4FEE;&#x6539;&#x4E00;&#x4E0B;&#x6211;&#x4EEC;&#x7684; watch &#x5199;&#x6CD5;&#xFF0C;&#x4FEE;&#x6539;&#x8FC7;&#x540E;&#x7684; watch &#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>watch: {
+  firstName: {
+    handler(newName, oldName) {
+      this.fullName = newName + &apos; &apos; + this.lastName;
+    },
+    // &#x4EE3;&#x8868;&#x5728;wacth&#x91CC;&#x58F0;&#x660E;&#x4E86;firstName&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x4E4B;&#x540E;&#x7ACB;&#x5373;&#x5148;&#x53BB;&#x6267;&#x884C;handler&#x65B9;&#x6CD5;
+    immediate: true
+  }
+}
+</code></pre><p>&#x6CE8;&#x610F;&#x5230;<code>handler</code>&#x4E86;&#x5417;&#xFF0C;&#x6211;&#x4EEC;&#x7ED9; firstName &#x7ED1;&#x5B9A;&#x4E86;&#x4E00;&#x4E2A;<code>handler</code>&#x65B9;&#x6CD5;&#xFF0C;&#x4E4B;&#x524D;&#x6211;&#x4EEC;&#x5199;&#x7684; watch &#x65B9;&#x6CD5;&#x5176;&#x5B9E;&#x9ED8;&#x8BA4;&#x5199;&#x7684;&#x5C31;&#x662F;&#x8FD9;&#x4E2A;<code>handler</code>&#xFF0C;Vue.js&#x4F1A;&#x53BB;&#x5904;&#x7406;&#x8FD9;&#x4E2A;&#x903B;&#x8F91;&#xFF0C;&#x6700;&#x7EC8;&#x7F16;&#x8BD1;&#x51FA;&#x6765;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x8FD9;&#x4E2A;<code>handler</code>&#x3002;</p>
+<p>&#x800C;<code>immediate:true</code>&#x4EE3;&#x8868;&#x5982;&#x679C;&#x5728; wacth &#x91CC;&#x58F0;&#x660E;&#x4E86; firstName &#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x4F1A;&#x7ACB;&#x5373;&#x5148;&#x53BB;&#x6267;&#x884C;&#x91CC;&#x9762;&#x7684;handler&#x65B9;&#x6CD5;&#xFF0C;&#x5982;&#x679C;&#x4E3A; <code>false</code>&#x5C31;&#x8DDF;&#x6211;&#x4EEC;&#x4EE5;&#x524D;&#x7684;&#x6548;&#x679C;&#x4E00;&#x6837;&#xFF0C;&#x4E0D;&#x4F1A;&#x5728;&#x7ED1;&#x5B9A;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x6267;&#x884C;&#x3002;</p>
+<p>&#xB7;</p>
+<ul>
+<li><h4 id="deep&#x5C5E;&#x6027;">deep&#x5C5E;&#x6027;</h4>
+</li>
+</ul>
+<p>&#xFF08;&#x603B;&#x7ED3;&#x5C31;&#x662F;&#xFF0C;&#x9488;&#x5BF9;&#x5BF9;&#x8C61;&#xFF0C;&#x9700;&#x8981;&#x5BF9;&#x8C61;&#x6539;&#x53D8;&#x65F6;&#x4F7F;&#x7528;&#xFF09;</p>
+<p>watch &#x91CC;&#x9762;&#x8FD8;&#x6709;&#x4E00;&#x4E2A;&#x5C5E;&#x6027; <code>deep</code>&#xFF0C;&#x9ED8;&#x8BA4;&#x503C;&#x662F; <code>false</code>&#xFF0C;&#x4EE3;&#x8868;&#x662F;&#x5426;&#x6DF1;&#x5EA6;&#x76D1;&#x542C;&#xFF0C;&#x6BD4;&#x5982;&#x6211;&#x4EEC; data &#x91CC;&#x6709;&#x4E00;&#x4E2A;<code>obj</code>&#x5C5E;&#x6027;&#xFF1A;</p>
+<pre><code>&lt;div&gt;
+      &lt;p&gt;obj.a: {{obj.a}}&lt;/p&gt;
+      &lt;p&gt;obj.a: &lt;input type=&quot;text&quot; v-model=&quot;obj.a&quot;&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+new Vue({
+  el: &apos;#root&apos;,
+  data: {
+    obj: {
+      a: 123
+    }
+  },
+  watch: {
+    obj: {
+      handler(newName, oldName) {
+         console.log(&apos;obj.a changed&apos;);
+      },
+      immediate: true
+    }
+  } 
+})
+</code></pre><p>&#x5F53;&#x6211;&#x4EEC;&#x5728;&#x5728;&#x8F93;&#x5165;&#x6846;&#x4E2D;&#x8F93;&#x5165;&#x6570;&#x636E;&#x89C6;&#x56FE;&#x6539;&#x53D8;<code>obj.a</code>&#x7684;&#x503C;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x53D1;&#x73B0;&#x662F;&#x65E0;&#x6548;&#x7684;&#x3002;&#x53D7;&#x73B0;&#x4EE3; JavaScript &#x7684;&#x9650;&#x5236; (&#x4EE5;&#x53CA;&#x5E9F;&#x5F03; <code>Object.observe</code>)&#xFF0C;Vue &#x4E0D;&#x80FD;&#x68C0;&#x6D4B;&#x5230;&#x5BF9;&#x8C61;&#x5C5E;&#x6027;&#x7684;&#x6DFB;&#x52A0;&#x6216;&#x5220;&#x9664;&#x3002;&#x7531;&#x4E8E; Vue &#x4F1A;&#x5728;&#x521D;&#x59CB;&#x5316;&#x5B9E;&#x4F8B;&#x65F6;&#x5BF9;&#x5C5E;&#x6027;&#x6267;&#x884C; <code>getter/setter</code> &#x8F6C;&#x5316;&#x8FC7;&#x7A0B;&#xFF0C;&#x6240;&#x4EE5;&#x5C5E;&#x6027;&#x5FC5;&#x987B;&#x5728; <code>data</code> &#x5BF9;&#x8C61;&#x4E0A;&#x5B58;&#x5728;&#x624D;&#x80FD;&#x8BA9; Vue &#x8F6C;&#x6362;&#x5B83;&#xFF0C;&#x8FD9;&#x6837;&#x624D;&#x80FD;&#x8BA9;&#x5B83;&#x662F;&#x54CD;&#x5E94;&#x7684;&#x3002;</p>
+<p>&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B; handler &#x53EA;&#x76D1;&#x542C;<code>obj</code>&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x5B83;&#x7684;&#x5F15;&#x7528;&#x7684;&#x53D8;&#x5316;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x6709;&#x7ED9;<code>obj</code>&#x8D4B;&#x503C;&#x7684;&#x65F6;&#x5019;&#x5B83;&#x624D;&#x4F1A;&#x76D1;&#x542C;&#x5230;&#xFF0C;&#x6BD4;&#x5982;&#x6211;&#x4EEC;&#x5728; mounted&#x4E8B;&#x4EF6;&#x94A9;&#x5B50;&#x51FD;&#x6570;&#x4E2D;&#x5BF9;<code>obj</code>&#x8FDB;&#x884C;&#x91CD;&#x65B0;&#x8D4B;&#x503C;&#xFF1A;</p>
+<pre><code>mounted: {
+  this.obj = {
+    a: &apos;456&apos;
+  }
+}
+</code></pre><p>&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x7684; handler &#x624D;&#x4F1A;&#x6267;&#x884C;&#xFF0C;&#x6253;&#x5370;<code>obj.a changed</code>&#x3002;</p>
+<p>&#x76F8;&#x53CD;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x76D1;&#x542C;<code>obj</code>&#x91CC;&#x7684;&#x5C5E;&#x6027;<code>a</code>&#x7684;&#x503C;&#x5462;&#xFF1F;&#x8FD9;&#x65F6;&#x5019;<code>deep</code>&#x5C5E;&#x6027;&#x5C31;&#x6D3E;&#x4E0A;&#x7528;&#x573A;&#x4E86;&#xFF01;</p>
+<pre><code>watch: {
+  obj: {
+    handler(newName, oldName) {
+      console.log(&apos;obj.a changed&apos;);
+    },
+    immediate: true,
+    deep: true
+  }
+}
+</code></pre><p>&#x5F00;&#x9500;&#x5C31;&#x4F1A;&#x975E;&#x5E38;&#x5927;&#x4E86;&#xFF0C;&#x4EFB;&#x4F55;&#x4FEE;&#x6539;<code>obj</code>&#x91CC;&#x9762;&#x4EFB;&#x4F55;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;&#x90FD;&#x4F1A;&#x89E6;&#x53D1;&#x8FD9;&#x4E2A;&#x76D1;&#x542C;&#x5668;&#x91CC;&#x7684; handler&#x3002;</p>
+<p>&#x4F18;&#x5316;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x662F;&#x4F7F;&#x7528;&#x5B57;&#x7B26;&#x4E32;&#x5F62;&#x5F0F;&#x76D1;&#x542C;&#x3002;</p>
+<pre><code>watch: {
+  &apos;obj.a&apos;: {
+    handler(newName, oldName) {
+      console.log(&apos;obj.a changed&apos;);
+    },
+    immediate: true,
+    // deep: true
+  }
+}
+</code></pre><p>&#x8FD9;&#x6837;Vue.js&#x624D;&#x4F1A;&#x4E00;&#x5C42;&#x4E00;&#x5C42;&#x89E3;&#x6790;&#x4E0B;&#x53BB;&#xFF0C;&#x76F4;&#x5230;&#x9047;&#x5230;&#x5C5E;&#x6027;<code>a</code>&#xFF0C;&#x7136;&#x540E;&#x624D;&#x7ED9;<code>a</code>&#x8BBE;&#x7F6E;&#x76D1;&#x542C;&#x51FD;&#x6570;&#x3002;</p>
+<p>computed: &#x76D1;&#x63A7;&#x81EA;&#x5DF1;&#x5B9A;&#x4E49;&#x7684;&#x53D8;&#x91CF;&#xFF0C;<strong>&#x65E0;&#x9700;&#x5728;data&#x4E2D;&#x58F0;&#x660E;</strong></p>
+<p>watch: &#x76D1;&#x63A7;data&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x6307;&#x5B9A;&#x53D8;&#x91CF;&#xFF0C;<strong>&#x9700;&#x8981;&#x5728;data&#x4E2D;&#x58F0;&#x660E;</strong></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="1-Vue目录.html" class="navigation navigation-prev " aria-label="Previous page: Vue目录">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="3-Vue.directive 自定义指令.html" class="navigation navigation-next " aria-label="Next page: Vue.Directive 自定义指令">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Vue Computed和Watch的区别","level":"1.3.2","depth":2,"next":{"title":"Vue.Directive 自定义指令","level":"1.3.3","depth":2,"path":"997-Vue · 杂/3-Vue.directive 自定义指令.md","ref":"997-Vue · 杂/3-Vue.directive 自定义指令.md","articles":[]},"previous":{"title":"Vue目录","level":"1.3.1","depth":2,"path":"997-Vue · 杂/1-Vue目录.md","ref":"997-Vue · 杂/1-Vue目录.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["gesummary","expandable-chapters"],"pluginsConfig":{"gesummary":{},"expandable-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"997-Vue · 杂/2-vue computed和watch的区别.md","mtime":"2021-02-22T07:02:38.313Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-02-22T07:04:12.312Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
