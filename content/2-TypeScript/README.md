@@ -1,5 +1,4 @@
 # TypeScript
 
-Test here
+学习TypeScript的一些笔记。
 
-t
