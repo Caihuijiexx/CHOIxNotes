@@ -6,7 +6,15 @@
     - [类型别名](2-TypeScript/4-类型别名.md)
     - [元组](2-TypeScript/5-元组.md)
     - [接口Interface](2-TypeScript/6-接口interface.md)
-    - [Untitled](2-TypeScript/Untitled.md)
+    - [类](2-TypeScript/7-类.md)
+- [Practice · 杂](996-Practice · 杂/README.md)
+
+    - [DOCTYPE](996-Practice · 杂/1-DOCTYPE.md)
+    - [Call和Apply](996-Practice · 杂/2-call和apply.md)
+    - [Vue3.0和Vue.2.X的响应式性能区别](996-Practice · 杂/3-Vue3.0和Vue.2.x的响应式性能区别.md)
+    - [严格模式](996-Practice · 杂/4-严格模式.md)
+    - [箭头函数](996-Practice · 杂/5-箭头函数.md)
+    - [闭包](996-Practice · 杂/6-闭包.md)
 - [Vue · 杂](997-Vue · 杂/README.md)
 
     - [Vue目录](997-Vue · 杂/1-Vue目录.md)
