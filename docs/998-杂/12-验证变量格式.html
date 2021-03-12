@@ -243,7 +243,33 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="../996-Practice · 杂/2-call和apply.html">
+        <li class="chapter " data-level="1.3.2" data-path="../996-Practice · 杂/10-Hoisting（变量提升）.html">
+            
+                <a href="../996-Practice · 杂/10-Hoisting（变量提升）.html">
+            
+                    
+                    Hoisting（变量提升）
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../996-Practice · 杂/11-ES6 代码转成 ES5 代码.html">
+            
+                <a href="../996-Practice · 杂/11-ES6 代码转成 ES5 代码.html">
+            
+                    
+                    ES6 代码转成 ES5 代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../996-Practice · 杂/2-call和apply.html">
             
                 <a href="../996-Practice · 杂/2-call和apply.html">
             
@@ -256,7 +282,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.3" data-path="../996-Practice · 杂/3-Vue3.0和Vue.2.x的响应式性能区别.html">
+        <li class="chapter " data-level="1.3.5" data-path="../996-Practice · 杂/3-Vue3.0和Vue.2.x的响应式性能区别.html">
             
                 <a href="../996-Practice · 杂/3-Vue3.0和Vue.2.x的响应式性能区别.html">
             
@@ -269,7 +295,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.4" data-path="../996-Practice · 杂/4-严格模式.html">
+        <li class="chapter " data-level="1.3.6" data-path="../996-Practice · 杂/4-严格模式.html">
             
                 <a href="../996-Practice · 杂/4-严格模式.html">
             
@@ -282,7 +308,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.5" data-path="../996-Practice · 杂/5-箭头函数.html">
+        <li class="chapter " data-level="1.3.7" data-path="../996-Practice · 杂/5-箭头函数.html">
             
                 <a href="../996-Practice · 杂/5-箭头函数.html">
             
@@ -295,12 +321,51 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.6" data-path="../996-Practice · 杂/6-闭包.html">
+        <li class="chapter " data-level="1.3.8" data-path="../996-Practice · 杂/6-闭包.html">
             
                 <a href="../996-Practice · 杂/6-闭包.html">
             
                     
                     闭包
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.9" data-path="../996-Practice · 杂/7-vue懒加载.html">
+            
+                <a href="../996-Practice · 杂/7-vue懒加载.html">
+            
+                    
+                    Vue懒加载
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.10" data-path="../996-Practice · 杂/8-模块化.html">
+            
+                <a href="../996-Practice · 杂/8-模块化.html">
+            
+                    
+                    模块化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.11" data-path="../996-Practice · 杂/9-关于 const 和 let 声明的变量不在 window 上.html">
+            
+                <a href="../996-Practice · 杂/9-关于 const 和 let 声明的变量不在 window 上.html">
+            
+                    
+                    关于 Const 和 Let 声明的变量不在 Window 上
             
                 </a>
             
@@ -728,7 +793,15 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="&#x9A8C;&#x8BC1;&#x53D8;&#x91CF;&#x683C;&#x5F0F;">&#x9A8C;&#x8BC1;&#x53D8;&#x91CF;&#x683C;&#x5F0F;</h1>
-<pre><code class="lang-javascript"><span class="hljs-built_in">Object</span>.prototype.toString.call(params) === <span class="hljs-string">&apos;[object Array]&apos;</span>
+<p>&#x6BCF;&#x4E00;&#x4E2A;&#x7EE7;&#x627F; Object &#x7684;&#x5BF9;&#x8C61;&#x90FD;&#x6709; <code>toString</code> &#x65B9;&#x6CD5;&#xFF0C;&#x5982;&#x679C; <code>toString</code> &#x65B9;&#x6CD5;&#x6CA1;&#x6709;&#x91CD;&#x5199;&#x7684;&#x8BDD;&#xFF0C;&#x4F1A;&#x8FD4;&#x56DE; <code>[Object type]</code>&#xFF0C;&#x5176;&#x4E2D; type &#x4E3A;&#x5BF9;&#x8C61;&#x7684;&#x7C7B;&#x578B;&#x3002;&#x4F46;&#x5F53;&#x9664;&#x4E86; Object &#x7C7B;&#x578B;&#x7684;&#x5BF9;&#x8C61;&#x5916;&#xFF0C;&#x5176;&#x4ED6;&#x7C7B;&#x578B;&#x76F4;&#x63A5;&#x4F7F;&#x7528; <code>toString</code> &#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x4F1A;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x90FD;&#x662F;&#x5185;&#x5BB9;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4F7F;&#x7528;call&#x6216;&#x8005;apply&#x65B9;&#x6CD5;&#x6765;&#x6539;&#x53D8;toString&#x65B9;&#x6CD5;&#x7684;&#x6267;&#x884C;&#x4E0A;&#x4E0B;&#x6587;&#x3002;</p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">Object</span>.prototype.toString.call([<span class="hljs-string">&apos;hello&apos;</span>,<span class="hljs-string">&apos;choi&apos;</span>]) <span class="hljs-comment">// &quot;[object Array]&quot;</span>
+<span class="hljs-built_in">Object</span>.prototype.toString.call(<span class="hljs-string">&apos;An&apos;</span>) <span class="hljs-comment">// &quot;[object String]&quot;</span>
+<span class="hljs-built_in">Object</span>.prototype.toString.call(<span class="hljs-number">1</span>) <span class="hljs-comment">// &quot;[object Number]&quot;</span>
+<span class="hljs-built_in">Object</span>.prototype.toString.call(<span class="hljs-built_in">Symbol</span>(<span class="hljs-number">1</span>)) <span class="hljs-comment">// &quot;[object Symbol]&quot;</span>
+<span class="hljs-built_in">Object</span>.prototype.toString.call(<span class="hljs-literal">null</span>) <span class="hljs-comment">// &quot;[object Null]&quot;</span>
+<span class="hljs-built_in">Object</span>.prototype.toString.call(<span class="hljs-literal">undefined</span>) <span class="hljs-comment">// &quot;[object Undefined]&quot;</span>
+<span class="hljs-built_in">Object</span>.prototype.toString.call(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{}) <span class="hljs-comment">// &quot;[object Function]&quot;</span>
+<span class="hljs-built_in">Object</span>.prototype.toString.call({name: <span class="hljs-string">&apos;An&apos;</span>}) <span class="hljs-comment">// &quot;[object Object]&quot;</span>
 </code></pre>
 
                                 
@@ -773,7 +846,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"验证变量格式","level":"1.5.4","depth":2,"next":{"title":"Js函数参数默认值设置","level":"1.5.5","depth":2,"path":"998-杂/2-js函数参数默认值设置.md","ref":"998-杂/2-js函数参数默认值设置.md","articles":[]},"previous":{"title":"ES6的小笔记","level":"1.5.3","depth":2,"path":"998-杂/11-ES6的小笔记.md","ref":"998-杂/11-ES6的小笔记.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["gesummary","expandable-chapters"],"pluginsConfig":{"gesummary":{},"expandable-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"998-杂/12-验证变量格式.md","mtime":"2021-02-22T09:06:58.292Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-09T08:47:08.045Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"验证变量格式","level":"1.5.4","depth":2,"next":{"title":"Js函数参数默认值设置","level":"1.5.5","depth":2,"path":"998-杂/2-js函数参数默认值设置.md","ref":"998-杂/2-js函数参数默认值设置.md","articles":[]},"previous":{"title":"ES6的小笔记","level":"1.5.3","depth":2,"path":"998-杂/11-ES6的小笔记.md","ref":"998-杂/11-ES6的小笔记.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["gesummary","expandable-chapters"],"pluginsConfig":{"gesummary":{},"expandable-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"998-杂/12-验证变量格式.md","mtime":"2021-03-10T02:05:43.967Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-12T17:27:25.168Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -10,11 +10,16 @@
 - [Practice · 杂](996-Practice · 杂/README.md)
 
     - [DOCTYPE](996-Practice · 杂/1-DOCTYPE.md)
+    - [Hoisting（变量提升）](996-Practice · 杂/10-Hoisting（变量提升）.md)
+    - [ES6 代码转成 ES5 代码](996-Practice · 杂/11-ES6 代码转成 ES5 代码.md)
     - [Call和Apply](996-Practice · 杂/2-call和apply.md)
     - [Vue3.0和Vue.2.X的响应式性能区别](996-Practice · 杂/3-Vue3.0和Vue.2.x的响应式性能区别.md)
     - [严格模式](996-Practice · 杂/4-严格模式.md)
     - [箭头函数](996-Practice · 杂/5-箭头函数.md)
     - [闭包](996-Practice · 杂/6-闭包.md)
+    - [Vue懒加载](996-Practice · 杂/7-vue懒加载.md)
+    - [模块化](996-Practice · 杂/8-模块化.md)
+    - [关于 Const 和 Let 声明的变量不在 Window 上](996-Practice · 杂/9-关于 const 和 let 声明的变量不在 window 上.md)
 - [Vue · 杂](997-Vue · 杂/README.md)
 
     - [Vue目录](997-Vue · 杂/1-Vue目录.md)
