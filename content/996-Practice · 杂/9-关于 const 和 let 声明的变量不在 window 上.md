@@ -10,7 +10,7 @@ console.log(window.a); // 12
 console.log(window.f); // f(){}
 ```
 
-但ES6规定，var 命令和 function 命令声明的全局变量，依旧是顶层对象的属性，但 let命令、const命令、class命令声明的全局变量，不属于顶层对象的属性。
+ES6规定，var 命令和 function 命令声明的全局变量，依旧是顶层对象的属性，但 let命令、const命令、class命令声明的全局变量，不属于顶层对象的属性。
 
 ```javascript
 let aa = 1;
