@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Vue懒加载 · GitBook</title>
+        <title>异步问题 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -61,10 +61,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="8-模块化.html" />
+    <link rel="next" href="15-防抖与节流.html" />
     
     
-    <link rel="prev" href="6-闭包.html" />
+    <link rel="prev" href="13-function*与yield.html" />
     
 
     </head>
@@ -295,7 +295,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.6" data-path="14-异步问题.html">
+        <li class="chapter active" data-level="1.3.6" data-path="14-异步问题.html">
             
                 <a href="14-异步问题.html">
             
@@ -399,7 +399,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.14" data-path="7-vue懒加载.html">
+        <li class="chapter " data-level="1.3.14" data-path="7-vue懒加载.html">
             
                 <a href="7-vue懒加载.html">
             
@@ -855,7 +855,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Vue懒加载</a>
+        <a href=".." >异步问题</a>
     </h1>
 </div>
 
@@ -870,98 +870,166 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="vue&#x61D2;&#x52A0;&#x8F7D;">vue&#x61D2;&#x52A0;&#x8F7D;</h1>
+                                <h1 id="&#x5F02;&#x6B65;&#x95EE;&#x9898;">&#x5F02;&#x6B65;&#x95EE;&#x9898;</h1>
+<blockquote>
+<p>&#x5173;&#x952E;&#x8BCD;&#xFF1A;</p>
+<p>event loop&#x4E8B;&#x4EF6;&#x5FAA;&#x73AF;&#xFF0C;microtasks&#x4E0E;macrotasks&#xFF0C;&#x5F02;&#x6B65;&#x8FD0;&#x884C;&#x673A;&#x5236;&#xFF0C;</p>
+</blockquote>
+<p>&#x4E00;&#x9053;&#x9762;&#x8BD5;&#x9898;&#x5F15;&#x53D1;&#x7684;&#x8840;&#x6848;&#xFF0C;&#x4E0B;&#x9762;&#x8FDB;&#x5165;&#x4E3B;&#x9898;&#xFF1A;</p>
+<pre><code class="lang-JavaScript"><span class="hljs-comment">// &#x4ECA;&#x65E5;&#x5934;&#x6761;&#x9762;&#x8BD5;&#x9898;</span>
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">async1</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;async1 start&apos;</span>)
+    <span class="hljs-keyword">await</span> async2()
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;async1 end&apos;</span>)
+}
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">async2</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;async2&apos;</span>)
+}
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;script start&apos;</span>)
+setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;settimeout&apos;</span>)
+})
+async1()
+<span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;promise1&apos;</span>)
+    resolve()
+}).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;promise2&apos;</span>)
+})
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;script end&apos;</span>)
+</code></pre>
+<p>&#x9898;&#x76EE;&#x7684;&#x672C;&#x8D28;&#xFF0C;&#x5C31;&#x662F;&#x8003;&#x5BDF;<code>setTimeout</code>&#x3001;<code>promise</code>&#x3001;<code>async await</code>&#x7684;&#x5B9E;&#x73B0;&#x53CA;&#x6267;&#x884C;&#x987A;&#x5E8F;&#xFF0C;&#x4EE5;&#x53CA;JS&#x7684;&#x4E8B;&#x4EF6;&#x5FAA;&#x73AF;&#x7684;&#x76F8;&#x5173;&#x95EE;&#x9898;&#x3002;</p>
+<p>&#x7B54;&#x6848;&#xFF1A;</p>
+<pre><code>script start
+async1 start
+async2
+promise1
+script end
+async1 end
+promise2
+settimeout
+</code></pre><p>&#x8FD9;&#x91CC;&#x6D89;&#x53CA;&#x5230;<code>Microtasks</code>&#x3001;<code>Macrotasks</code>&#x3001;event loop &#x4EE5;&#x53CA;JS&#x7684;&#x5F02;&#x6B65;&#x8FD0;&#x884C;&#x673A;&#x5236;&#x3002;</p>
+<h3 id="&#x4E00;&#x3001;event-loop">&#x4E00;&#x3001;event loop</h3>
+<p>JS&#x4E3B;&#x7EBF;&#x7A0B;&#x4E0D;&#x65AD;&#x7684;&#x5FAA;&#x73AF;&#x5F80;&#x590D;&#x7684;&#x4ECE;&#x4EFB;&#x52A1;&#x961F;&#x5217;&#x4E2D;&#x8BFB;&#x53D6;&#x4EFB;&#x52A1;&#xFF0C;&#x6267;&#x884C;&#x4EFB;&#x52A1;&#xFF0C;&#x8FD9;&#x4E2D;&#x8FD0;&#x884C;&#x673A;&#x5236;&#x79F0;&#x4E3A;&#x4E8B;&#x4EF6;&#x5FAA;&#x73AF;&#xFF08;event loop&#xFF09;&#x3002;</p>
+<h3 id="&#x4E8C;&#x3001;microtasks&#x3001;macrotasks">&#x4E8C;&#x3001;Microtasks&#x3001;Macrotasks</h3>
+<p>Microtasks&#x548C;Macrotasks&#x662F;&#x5F02;&#x6B65;&#x4EFB;&#x52A1;&#x7684;&#x4E00;&#x79CD;&#x7C7B;&#x578B;&#xFF0C;<code>Microtasks</code>&#x7684;&#x4F18;&#x5148;&#x7EA7;&#x8981;&#x9AD8;&#x4E8E;<code>Macrotasks</code>&#xFF0C;&#x4E0B;&#x9762;&#x662F;&#x5B83;&#x4EEC;&#x6240;&#x5305;&#x542B;&#x7684;api&#xFF1A;</p>
+<ul>
+<li>microtasks<ul>
+<li>process.nextTick</li>
+<li>promise</li>
+<li>Object.observe (&#x5E9F;&#x5F03;)</li>
+<li>MutationObserver</li>
+</ul>
+</li>
+<li>macrotasks<ul>
+<li>setTimeout</li>
+<li>setImmerdiate</li>
+<li>setInterval</li>
+<li>I/O</li>
+<li>UI &#x6E32;&#x67D3;</li>
+</ul>
+</li>
+</ul>
+<p><strong>&#x6CE8;&#x610F;&#xFF1A;</strong></p>
 <ol>
-<li>vue&#x5F02;&#x6B65;&#x7EC4;&#x4EF6;</li>
-<li>es&#x63D0;&#x6848;&#x7684;import()</li>
-<li>webpack&#x7684;require,ensure()</li>
+<li>&#x6BCF;&#x4E00;&#x4E2A; event loop &#x90FD;&#x6709;&#x4E00;&#x4E2A; microtask queue</li>
+<li>&#x6BCF;&#x4E2A; event loop &#x4F1A;&#x6709;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;macrotaks queue ( &#x4E5F;&#x53EF;&#x4EE5;&#x79F0;&#x4E3A;task queue )</li>
+<li>&#x4E00;&#x4E2A;&#x4EFB;&#x52A1; task &#x53EF;&#x4EE5;&#x653E;&#x5165; macrotask queue &#x4E5F;&#x53EF;&#x4EE5;&#x653E;&#x5165; microtask queue&#x4E2D;</li>
+<li>&#x6BCF;&#x4E00;&#x6B21;event loop&#xFF0C;&#x4F1A;&#x9996;&#x5148;&#x6267;&#x884C; microtask queue&#xFF0C; &#x6267;&#x884C;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x4F1A;&#x63D0;&#x53D6; macrotask queue &#x7684;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#x52A0;&#x5165; microtask queue&#xFF0C; &#x63A5;&#x7740;&#x7EE7;&#x7EED;&#x6267;&#x884C;microtask queue&#xFF0C;&#x4F9D;&#x6B21;&#x6267;&#x884C;&#x4E0B;&#x53BB;&#x76F4;&#x81F3;&#x6240;&#x6709;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x7ED3;&#x675F;&#x3002;</li>
 </ol>
-<p>`</p>
-<h4 id="&#x672A;&#x4F7F;&#x7528;&#x61D2;&#x52A0;&#x8F7D;">&#x672A;&#x4F7F;&#x7528;&#x61D2;&#x52A0;&#x8F7D;</h4>
-<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> HelloWorld <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;@/components/HelloWorld&apos;</span>
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">new</span> Router({
-  routes: [
-    {
-      path: <span class="hljs-string">&apos;/&apos;</span>,
-      name: <span class="hljs-string">&apos;HelloWorld&apos;</span>,
-      component:HelloWorld
-    }
-  ]
+<h3 id="&#x4E09;&#x3001;&#x5F02;&#x6B65;&#x8FD0;&#x884C;&#x673A;&#x5236;">&#x4E09;&#x3001;&#x5F02;&#x6B65;&#x8FD0;&#x884C;&#x673A;&#x5236;</h3>
+<p>&#x6211;&#x4EEC;&#x5DF2;&#x77E5;&#xFF0C; JS &#x662F;&#x5355;&#x7EBF;&#x7A0B;&#x7684;&#xFF0C;&#x81F3;&#x4E8E;&#x4E3A;&#x4EC0;&#x4E48;&#xFF0C;&#x8BE6;&#x89C1;<a href="https://blog.csdn.net/lunahaijiao/article/details/85329510&#x3002;" target="_blank">https://blog.csdn.net/lunahaijiao/article/details/85329510&#x3002;</a></p>
+<p>&#x4E0B;&#x9762;&#x770B;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre><code class="lang-JavaScript"><span class="hljs-comment">// 1. &#x5F00;&#x59CB;&#x6267;&#x884C;</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>)    <span class="hljs-comment">//     2. &#x6253;&#x5370; 1</span>
+setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{    <span class="hljs-comment">// 6. &#x6D4F;&#x89C8;&#x5668;&#x5728; 0ms &#x540E;&#xFF0C;&#x5C06;&#x8BE5;&#x51FD;&#x6570;&#x63A8;&#x5165;&#x4EFB;&#x52A1;&#x961F;&#x5217;</span>
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">2</span>)    <span class="hljs-comment">// 7. &#x6253;&#x5370; 2</span>
+    <span class="hljs-built_in">Promise</span>.resolve(<span class="hljs-number">1</span>).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{    <span class="hljs-comment">// 8. &#x5C06; resolve(1) &#x63A8;&#x5165;&#x4EFB;&#x52A1;&#x961F;&#x5217;  9. &#x5C06; function&#x51FD;&#x6570;&#x63A8;&#x5165;&#x4EFB;&#x52A1;&#x961F;&#x5217;</span>
+        cosole.log(<span class="hljs-string">&apos;ok&apos;</span>)    <span class="hljs-comment">// 10. &#x6253;&#x5370; ok</span>
+    })
+})    <span class="hljs-comment">// 3.&#x8C03;&#x7528; setTimeout &#x51FD;&#x6570;&#xFF0C;&#x5E76;&#x5B9A;&#x4E49;&#x5176;&#x5B8C;&#x6210;&#x540E;&#x6267;&#x884C;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;</span>
+setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>)</span>{        <span class="hljs-comment">// 11. &#x6D4F;&#x89C8;&#x5668; 0ms &#x540E;&#xFF0C;&#x5C06;&#x8BE5;&#x51FD;&#x6570;&#x63A8;&#x5165;&#x4EFB;&#x52A1;&#x961F;&#x5217;</span>
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">3</span>)    <span class="hljs-comment">// 12. &#x6253;&#x5370; 3</span>
+})  <span class="hljs-comment">// 4. &#x8C03;&#x7528; setTimeout &#x51FD;&#x6570;&#xFF0C;&#x5E76;&#x5B9A;&#x4E49;&#x5176;&#x5B8C;&#x6210;&#x540E;&#x6267;&#x884C;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;</span>
+<span class="hljs-comment">// 5. &#x4E3B;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x6808;&#x6E05;&#x7A7A;&#xFF0C;&#x5F00;&#x59CB;&#x8BFB;&#x53D6; &#x4EFB;&#x52A1;&#x961F;&#x5217; &#x4E2D;&#x7684;&#x4EFB;&#x52A1;</span>
+<span class="hljs-comment">// output&#xFF1A; 1  2 ok 3</span>
+</code></pre>
+<p>JS &#x4E3B;&#x7EBF;&#x7A0B;&#x62E5;&#x6709;&#x4E00;&#x4E2A; <strong>&#x6267;&#x884C;&#x6808;&#xFF08;&#x540C;&#x6B65;&#x4EFB;&#x52A1;&#xFF09;</strong> &#x548C; &#x4E00;&#x4E2A; <strong>&#x4EFB;&#x52A1;&#x961F;&#x5217;&#xFF08;microtasks queue&#xFF09;</strong>&#xFF0C;&#x4E3B;&#x7EBF;&#x7A0B;&#x4F1A;&#x4F9D;&#x6B21;&#x6267;&#x884C;&#x4EE3;&#x7801;&#xFF0C;</p>
+<ul>
+<li>&#x5F53;&#x9047;&#x5230;&#x51FD;&#x6570;&#xFF08;&#x540C;&#x6B65;&#xFF09;&#x65F6;&#xFF0C;&#x4F1A;&#x5148;&#x5C06;&#x51FD;&#x6570;&#x5165;&#x6808;&#xFF0C;&#x51FD;&#x6570;&#x8FD0;&#x884C;&#x7ED3;&#x675F;&#x540E;&#x518D;&#x5C06;&#x8BE5;&#x51FD;&#x6570;&#x51FA;&#x6808;&#xFF1B;</li>
+<li>&#x5F53;&#x9047;&#x5230;task&#x4EFB;&#x52A1;&#xFF08;&#x5F02;&#x6B65;&#xFF09;&#x65F6;&#xFF0C;&#x8FD9;&#x4E9B; task &#x4F1A;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x503C;&#xFF0C;&#x8BA9;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E0D;&#x5728;&#x6B64;&#x963B;&#x585E;&#xFF0C;&#x4F7F;&#x4E3B;&#x7EBF;&#x7A0B;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x4E0B;&#x53BB;&#xFF0C;&#x800C;&#x771F;&#x6B63;&#x7684;task&#x4EFB;&#x52A1;&#x5C06;&#x4EA4;&#x7ED9; <strong>&#x6D4F;&#x89C8;&#x5668;&#x5185;&#x6838;</strong> &#x6267;&#x884C;&#xFF0C;&#x6D4F;&#x89C8;&#x5668;&#x5185;&#x6838;&#x6267;&#x884C;&#x7ED3;&#x675F;&#x540E;&#xFF0C;&#x4F1A;&#x5C06;&#x8BE5;&#x4EFB;&#x52A1;&#x4E8B;&#x5148;&#x5B9A;&#x4E49;&#x597D;&#x7684;<strong>&#x56DE;&#x8C03;&#x51FD;&#x6570;</strong>&#x52A0;&#x5165;&#x76F8;&#x5E94;&#x7684;<strong>&#x4EFB;&#x52A1;&#x961F;&#x5217;&#xFF08;microtasks queue/ macrotasks queue&#xFF09;</strong>&#x4E2D;&#x3002;</li>
+<li>&#x5F53;JS&#x4E3B;&#x7EBF;&#x7A0B;<strong>&#x6E05;&#x7A7A;&#x6267;&#x884C;&#x6808;</strong>&#x4E4B;&#x540E;&#xFF0C;&#x4F1A;&#x6309;&#x5148;&#x5165;&#x5148;&#x51FA;&#x7684;&#x987A;&#x5E8F;&#x8BFB;&#x53D6;microtasks queue&#x4E2D;&#x7684;<strong>&#x56DE;&#x8C03;&#x51FD;&#x6570;</strong>&#xFF0C;&#x5E76;&#x5C06;&#x8BE5;&#x51FD;&#x6570;&#x5165;&#x6808;&#xFF0C;&#x7EE7;&#x7EED;&#x8FD0;&#x884C;&#x6267;&#x884C;&#x6808;&#xFF0C;&#x76F4;&#x5230;&#x6E05;&#x7A7A;&#x6267;&#x884C;&#x6808;&#xFF0C;&#x518D;&#x53BB;&#x8BFB;&#x53D6;<strong>&#x4EFB;&#x52A1;&#x961F;&#x5217;</strong>&#x3002;</li>
+<li>&#x5F53;microtasks queue&#x4E2D;&#x7684;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x4F1A;&#x63D0;&#x53D6; macrotask queue &#x7684;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#x52A0;&#x5165; microtask queue&#xFF0C; &#x63A5;&#x7740;&#x7EE7;&#x7EED;&#x6267;&#x884C;microtask queue&#xFF0C;&#x4F9D;&#x6B21;&#x6267;&#x884C;&#x4E0B;&#x53BB;&#x76F4;&#x81F3;&#x6240;&#x6709;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x7ED3;&#x675F;&#x3002;</li>
+</ul>
+<p>&#x8FD9;&#x5C31;&#x662F; <strong>JS&#x7684;&#x5F02;&#x6B65;&#x6267;&#x884C;&#x673A;&#x5236;</strong></p>
+<h3 id="&#x56DB;&#x3001;async-await&#x3001;promise&#x3001;settimeout">&#x56DB;&#x3001;async await&#x3001;Promise&#x3001;setTimeout</h3>
+<ol>
+<li><p>setTimeout</p>
+<pre><code class="lang-JavaScript"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;script start&apos;</span>)    <span class="hljs-comment">//1. &#x6253;&#x5370; script start</span>
+setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;settimeout&apos;</span>)    <span class="hljs-comment">// 4. &#x6253;&#x5370; settimeout</span>
+})    <span class="hljs-comment">// 2. &#x8C03;&#x7528; setTimeout &#x51FD;&#x6570;&#xFF0C;&#x5E76;&#x5B9A;&#x4E49;&#x5176;&#x5B8C;&#x6210;&#x540E;&#x6267;&#x884C;&#x7684;&#x56DE;&#x8C03;&#x51FD;&#x6570;</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;script end&apos;</span>)    <span class="hljs-comment">//3. &#x6253;&#x5370; script start</span>
+<span class="hljs-comment">// &#x8F93;&#x51FA;&#x987A;&#x5E8F;&#xFF1A;script start-&gt;script end-&gt;settimeout</span>
+</code></pre>
+</li>
+<li><p>Promise</p>
+<p>Promise&#x672C;&#x8EAB;&#x662F;<strong>&#x540C;&#x6B65;&#x7684;&#x7ACB;&#x5373;&#x6267;&#x884C;&#x51FD;&#x6570;</strong>&#xFF0C; &#x5F53;&#x5728;executor&#x4E2D;&#x6267;&#x884C;resolve&#x6216;&#x8005;reject&#x7684;&#x65F6;&#x5019;, &#x6B64;&#x65F6;&#x662F;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#xFF0C; &#x4F1A;&#x5148;&#x6267;&#x884C;then/catch&#x7B49;&#xFF0C;&#x5F53;&#x4E3B;&#x6808;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x624D;&#x4F1A;&#x53BB;&#x8C03;&#x7528;resolve/reject&#x4E2D;&#x5B58;&#x653E;&#x7684;&#x65B9;&#x6CD5;&#x6267;&#x884C;&#xFF0C;&#x6253;&#x5370;p&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x662F;&#x6253;&#x5370;&#x7684;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#xFF0C;&#x4E00;&#x4E2A;Promise&#x5B9E;&#x4F8B;&#x3002;</p>
+<pre><code class="lang-JavaScript"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;script start&apos;</span>)
+<span class="hljs-keyword">let</span> promise1 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">resolve</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;promise1&apos;</span>)
+    resolve()
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;promise1 end&apos;</span>)
+}).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;promise2&apos;</span>)
+})
+setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;settimeout&apos;</span>)
+})
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;script end&apos;</span>)
+<span class="hljs-comment">// &#x8F93;&#x51FA;&#x987A;&#x5E8F;: script start-&gt;promise1-&gt;promise1 end-&gt;script end-&gt;promise2-&gt;settimeout</span>
+</code></pre>
+<p>&#x5F53;JS&#x4E3B;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x5230;Promise&#x5BF9;&#x8C61;&#x65F6;&#xFF0C;</p>
+<ul>
+<li>promise1.then() &#x7684;&#x56DE;&#x8C03;&#x5C31;&#x662F;&#x4E00;&#x4E2A; task</li>
+<li>promise1 &#x662F; resolved&#x6216;rejected: &#x90A3;&#x8FD9;&#x4E2A; task &#x5C31;&#x4F1A;&#x653E;&#x5165;&#x5F53;&#x524D;&#x4E8B;&#x4EF6;&#x5FAA;&#x73AF;&#x56DE;&#x5408;&#x7684; microtask queue</li>
+<li>promise1 &#x662F; pending: &#x8FD9;&#x4E2A; task &#x5C31;&#x4F1A;&#x653E;&#x5165; &#x4E8B;&#x4EF6;&#x5FAA;&#x73AF;&#x7684;&#x672A;&#x6765;&#x7684;&#x67D0;&#x4E2A;(&#x53EF;&#x80FD;&#x4E0B;&#x4E00;&#x4E2A;)&#x56DE;&#x5408;&#x7684; microtask queue &#x4E2D;</li>
+<li>setTimeout &#x7684;&#x56DE;&#x8C03;&#x4E5F;&#x662F;&#x4E2A; task &#xFF0C;&#x5B83;&#x4F1A;&#x88AB;&#x653E;&#x5165; macrotask queue &#x5373;&#x4F7F;&#x662F; 0ms &#x7684;&#x60C5;&#x51B5;</li>
+</ul>
+</li>
+<li><p>async await</p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">async1</span>(<span class="hljs-params"></span>)</span>{
+   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;async1 start&apos;</span>);
+    <span class="hljs-keyword">await</span> async2();
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;async1 end&apos;</span>)
+}
+<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">async2</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;async2&apos;</span>)
+}
+
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;script start&apos;</span>);
+async1();
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;script end&apos;</span>)
+
+<span class="hljs-comment">// &#x8F93;&#x51FA;&#x987A;&#x5E8F;&#xFF1A;script start-&gt;async1 start-&gt;async2-&gt;script end-&gt;async1 end</span>
+</code></pre>
+<p>async &#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A; Promise &#x5BF9;&#x8C61;&#xFF0C;&#x5F53;&#x51FD;&#x6570;&#x6267;&#x884C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E00;&#x65E6;&#x9047;&#x5230; await &#x5C31;&#x4F1A;&#x5148;&#x8FD4;&#x56DE;&#xFF0C;&#x7B49;&#x5230;&#x89E6;&#x53D1;&#x7684;&#x5F02;&#x6B65;&#x64CD;&#x4F5C;&#x5B8C;&#x6210;&#xFF0C;&#x518D;&#x6267;&#x884C;&#x51FD;&#x6570;&#x4F53;&#x5185;&#x540E;&#x9762;&#x7684;&#x8BED;&#x53E5;&#x3002;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x4E3A;&#xFF0C;&#x662F;&#x8BA9;&#x51FA;&#x4E86;&#x7EBF;&#x7A0B;&#xFF0C;&#x8DF3;&#x51FA;&#x4E86; async &#x51FD;&#x6570;&#x4F53;&#x3002;</p>
+<p>&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre><code class="lang-JavaScript"><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">func1</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>
+}
+
+<span class="hljs-built_in">console</span>.log(func1())
+</code></pre>
+<p><a href="https://camo.githubusercontent.com/cdf382b45dfc37ae972c480664cefd416ee13d234453deaae506230f6c3f55ea/68747470733a2f2f696d672d626c6f672e6373646e696d672e636e2f32303139303133313137343431333536322e706e67" target="_blank"><img src="https://camo.githubusercontent.com/cdf382b45dfc37ae972c480664cefd416ee13d234453deaae506230f6c3f55ea/68747470733a2f2f696d672d626c6f672e6373646e696d672e636e2f32303139303133313137343431333536322e706e67" alt="&#x5728;&#x8FD9;&#x91CC;&#x63D2;&#x5165;&#x56FE;&#x7247;&#x63CF;&#x8FF0;"></a>
+&#x5F88;&#x663E;&#x7136;&#xFF0C;func1&#x7684;&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x4E00;&#x4E2A;Promise&#x5BF9;&#x8C61;&#x3002;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;then&#x6765;&#x5904;&#x7406;&#x540E;&#x7EED;&#x903B;&#x8F91;&#x3002;</p>
+<pre><code class="lang-JavaScript">func1().then(res =&gt; {
+    <span class="hljs-built_in">console</span>.log(res);  <span class="hljs-comment">// 30</span>
 })
 </code></pre>
-<p>`</p>
-<h4 id="vue&#x5F02;&#x6B65;&#x7EC4;&#x4EF6;">vue&#x5F02;&#x6B65;&#x7EC4;&#x4EF6;</h4>
-<p>&#x4E3B;&#x8981;&#x662F;&#x4F7F;&#x7528;&#x4E86;<code>resolve</code>&#x7684;&#x5F02;&#x6B65;&#x673A;&#x5236;&#xFF0C;&#x7528;<code>require</code>&#x4EE3;&#x66FF;&#x4E86;<code>import</code>&#xFF0C;&#x5B9E;&#x73B0;&#x6309;&#x9700;&#x52A0;&#x8F7D;</p>
-<p>resolve =&gt; require(route,resovle)</p>
-<pre><code class="lang-javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">new</span> Router({
-  routes: [{
-    path: <span class="hljs-string">&apos;/&apos;</span>,
-    name: <span class="hljs-string">&apos;HelloWorld&apos;</span>,
-    component: resolve =&gt; { <span class="hljs-built_in">require</span>([<span class="hljs-string">&apos;@/components/HelloWorld&apos;</span>],resovle); }
-  }]
-})
-</code></pre>
-<p>`</p>
-<h4 id="es&#x63D0;&#x6848;&#x7684;import">es&#x63D0;&#x6848;&#x7684;import()</h4>
-<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> HelloWorld = () =&gt; <span class="hljs-keyword">import</span>(<span class="hljs-string">&quot;@/components/HelloWorld&quot;</span>);
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">new</span> Router({
-  routes: [{
-    path: <span class="hljs-string">&apos;/&apos;</span>,
-    name: <span class="hljs-string">&apos;HelloWorld&apos;</span>,
-    component: HelloWorld
-  }]
-})
-
-<span class="hljs-comment">/*&#x6216;&#x8005;*/</span>
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">new</span> Router({
-  routes: [{
-    path: <span class="hljs-string">&apos;/&apos;</span>,
-    name: <span class="hljs-string">&apos;HelloWorld&apos;</span>,
-    component: () =&gt; <span class="hljs-keyword">import</span>(<span class="hljs-string">&quot;@/components/HelloWorld&quot;</span>)
-  }]
-})
-</code></pre>
-<p>`</p>
-<h4 id="webpack&#x7684;requireensure">webpack&#x7684;require.ensure()</h4>
-<p>vue-router&#x914D;&#x7F6E;&#x8DEF;&#x7531;&#xFF0C;&#x4F7F;&#x7528;webpack&#x7684;require.ensure&#x6280;&#x672F;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x6309;&#x9700;&#x52A0;&#x8F7D;&#x3002; 
-&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x591A;&#x4E2A;&#x8DEF;&#x7531;&#x6307;&#x5B9A;&#x76F8;&#x540C;&#x7684;chunkName&#xFF0C;&#x4F1A;&#x5408;&#x5E76;&#x6253;&#x5305;&#x6210;&#x4E00;&#x4E2A;js&#x6587;&#x4EF6;&#x3002;</p>
-<pre><code class="lang-javascript">require.ensure(
-  dependencies: String[],
-  callback: function(require),
-  errorCallback: function(error),
-  chunkName: String
-)
-
-/* &#x6309;&#x7167;&#x4E0A;&#x9762;&#x6307;&#x5B9A;&#x7684;&#x987A;&#x5E8F;&#xFF0C;webpack &#x652F;&#x6301;&#x4EE5;&#x4E0B;&#x53C2;&#x6570;&#xFF1A;
-
-    dependencies&#xFF1A;&#x5B57;&#x7B26;&#x4E32;&#x6784;&#x6210;&#x7684;&#x6570;&#x7EC4;&#xFF0C;&#x58F0;&#x660E; callback &#x56DE;&#x8C03;&#x51FD;&#x6570;&#x4E2D;&#x6240;&#x9700;&#x7684;&#x6240;&#x6709;&#x6A21;&#x5757;&#x3002;
-    callback&#xFF1A;&#x53EA;&#x8981;&#x52A0;&#x8F7D;&#x597D;&#x5168;&#x90E8;&#x4F9D;&#x8D56;&#xFF0C;webpack &#x5C31;&#x4F1A;&#x6267;&#x884C;&#x6B64;&#x51FD;&#x6570;&#x3002;require &#x51FD;&#x6570;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x4F20;&#x5165;&#x6B64;&#x51FD;&#x6570;&#x3002;&#x5F53;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x9700;&#x8981;&#x4F9D;&#x8D56;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;require() &#x6765;&#x52A0;&#x8F7D;&#x4F9D;&#x8D56;&#x3002;&#x51FD;&#x6570;&#x4F53;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x6B64;&#x53C2;&#x6570;&#xFF0C;&#x6765;&#x8FDB;&#x4E00;&#x6B65;&#x6267;&#x884C; require() &#x6A21;&#x5757;&#x3002;
-    errorCallback&#xFF1A;&#x5F53; webpack &#x52A0;&#x8F7D;&#x4F9D;&#x8D56;&#x5931;&#x8D25;&#x65F6;&#xFF0C;&#x4F1A;&#x6267;&#x884C;&#x6B64;&#x51FD;&#x6570;&#x3002;
-    chunkName&#xFF1A;&#x7531; require.ensure() &#x521B;&#x5EFA;&#x51FA;&#x7684; chunk &#x7684;&#x540D;&#x5B57;&#x3002;&#x901A;&#x8FC7;&#x5C06;&#x540C;&#x4E00;&#x4E2A; chunkName &#x4F20;&#x9012;&#x7ED9;&#x4E0D;&#x540C;&#x7684; require.ensure() &#x8C03;&#x7528;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5C06;&#x5B83;&#x4EEC;&#x7684;&#x4EE3;&#x7801;&#x5408;&#x5E76;&#x5230;&#x4E00;&#x4E2A;&#x5355;&#x72EC;&#x7684; chunk &#x4E2D;&#xFF0C;&#x4ECE;&#x800C;&#x53EA;&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x6D4F;&#x89C8;&#x5668;&#x5FC5;&#x987B;&#x52A0;&#x8F7D;&#x7684; bundle&#x3002;
-
-  &#x867D;&#x7136;&#x6211;&#x4EEC;&#x5C06; require &#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x7ED9;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#xFF0C;&#x7136;&#x800C;&#x5982;&#x679C;&#x4F7F;&#x7528;&#x968F;&#x610F;&#x7684;&#x540D;&#x5B57;&#xFF0C;
-  &#x4F8B;&#x5982; require.ensure([], function(request) { request(&apos;someModule&apos;); }) 
-  &#x5219;&#x65E0;&#x6CD5;&#x88AB; webpack &#x9759;&#x6001;&#x89E3;&#x6790;&#x5668;&#x5904;&#x7406;&#xFF0C;&#x6240;&#x4EE5;&#x8FD8;&#x662F;&#x8BF7;&#x4F7F;&#x7528; require&#xFF0C;
-  &#x4F8B;&#x5982; require.ensure([], function(require) { require(&apos;someModule&apos;); })&#x3002;
-
-*/
-</code></pre>
-<pre><code class="lang-javascript"><span class="hljs-comment">// &#x4E3E;&#x4F8B;</span>
-
-<span class="hljs-comment">// r&#x5C31;&#x662F;resolve</span>
-<span class="hljs-keyword">const</span> list = r =&gt; <span class="hljs-built_in">require</span>.ensure([], () =&gt; r(<span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;../components/list/list&apos;</span>)), <span class="hljs-string">&apos;list&apos;</span>);
-<span class="hljs-comment">// &#x8DEF;&#x7531;&#x4E5F;&#x662F;&#x6B63;&#x5E38;&#x7684;&#x5199;&#x6CD5;  &#x8FD9;&#x79CD;&#x662F;&#x5B98;&#x65B9;&#x63A8;&#x8350;&#x7684;&#x5199;&#x7684; &#x6309;&#x6A21;&#x5757;&#x5212;&#x5206;&#x61D2;&#x52A0;&#x8F7D; </span>
-<span class="hljs-keyword">const</span> router = <span class="hljs-keyword">new</span> Router({
-    routes: [
-        {
-           path: <span class="hljs-string">&apos;/list/blog&apos;</span>,
-           component: list,
-           name: <span class="hljs-string">&apos;blog&apos;</span>
-        }
-    ]
-})
-</code></pre>
+<p>await&#x7684;&#x542B;&#x4E49;&#x4E3A;&#x7B49;&#x5F85;&#xFF0C;&#x4E5F;&#x5C31;&#x662F; async &#x51FD;&#x6570;&#x9700;&#x8981;&#x7B49;&#x5F85;await&#x540E;&#x7684;&#x51FD;&#x6570;&#x6267;&#x884C;&#x5B8C;&#x6210;&#x5E76;&#x4E14;&#x6709;&#x4E86;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#xFF08;Promise&#x5BF9;&#x8C61;&#xFF09;&#x4E4B;&#x540E;&#xFF0C;&#x624D;&#x80FD;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x3002;await&#x901A;&#x8FC7;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;Promise&#x5BF9;&#x8C61;&#x6765;&#x5B9E;&#x73B0;&#x540C;&#x6B65;&#x7684;&#x6548;&#x679C;&#x3002;</p>
+</li>
+</ol>
 
                                 
                                 </section>
@@ -989,12 +1057,12 @@
 
             
                 
-                <a href="6-闭包.html" class="navigation navigation-prev " aria-label="Previous page: 闭包">
+                <a href="13-function*与yield.html" class="navigation navigation-prev " aria-label="Previous page: Function*与Yield">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="8-模块化.html" class="navigation navigation-next " aria-label="Next page: 模块化">
+                <a href="15-防抖与节流.html" class="navigation navigation-next " aria-label="Next page: 防抖与节流">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1005,7 +1073,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Vue懒加载","level":"1.3.14","depth":2,"next":{"title":"模块化","level":"1.3.15","depth":2,"path":"996-Practice · 杂/8-模块化.md","ref":"996-Practice · 杂/8-模块化.md","articles":[]},"previous":{"title":"闭包","level":"1.3.13","depth":2,"path":"996-Practice · 杂/6-闭包.md","ref":"996-Practice · 杂/6-闭包.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["gesummary","expandable-chapters"],"pluginsConfig":{"gesummary":{},"expandable-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"996-Practice · 杂/7-vue懒加载.md","mtime":"2021-03-10T01:25:33.021Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-17T06:23:11.630Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"异步问题","level":"1.3.6","depth":2,"next":{"title":"防抖与节流","level":"1.3.7","depth":2,"path":"996-Practice · 杂/15-防抖与节流.md","ref":"996-Practice · 杂/15-防抖与节流.md","articles":[]},"previous":{"title":"Function*与Yield","level":"1.3.5","depth":2,"path":"996-Practice · 杂/13-function*与yield.md","ref":"996-Practice · 杂/13-function*与yield.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["gesummary","expandable-chapters"],"pluginsConfig":{"gesummary":{},"expandable-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"996-Practice · 杂/14-异步问题.md","mtime":"2021-03-16T17:41:10.446Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-17T06:23:11.630Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
