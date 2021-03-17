@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>路由守卫 · GitBook</title>
+        <title>Vue.Component和Component标签 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -61,10 +61,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="11-Vue目录.html" />
+    <link rel="next" href="18-vue的this.$refs 打印为undefined.html" />
     
     
-    <link rel="prev" href="./" />
+    <link rel="prev" href="16-Vue的生命周期.html" />
     
 
     </head>
@@ -457,7 +457,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.4.1" data-path="10-路由守卫.html">
+        <li class="chapter " data-level="1.4.1" data-path="10-路由守卫.html">
             
                 <a href="10-路由守卫.html">
             
@@ -548,7 +548,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.8" data-path="17-Vue.component和component标签.html">
+        <li class="chapter active" data-level="1.4.8" data-path="17-Vue.component和component标签.html">
             
                 <a href="17-Vue.component和component标签.html">
             
@@ -855,7 +855,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >路由守卫</a>
+        <a href=".." >Vue.Component和Component标签</a>
     </h1>
 </div>
 
@@ -870,55 +870,109 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x8DEF;&#x7531;&#x5B88;&#x536B;">&#x8DEF;&#x7531;&#x5B88;&#x536B;</h1>
-<p>&#x6240;&#x6709;&#x7684;&#x94A9;&#x5B50;&#xFF1A;</p>
-<p><strong>&#x5168;&#x5C40;&#x8DEF;&#x7531;&#x94A9;&#x5B50;&#xFF1A;beforeEach(to,from, next)&#x3001;beforeResolve(to,from, next)&#x3001;afterEach(to,from)&#xFF1B;</strong></p>
-<p><strong>&#x72EC;&#x4EAB;&#x8DEF;&#x7531;&#x94A9;&#x5B50;&#xFF1A;beforeEnter(to,from, next)&#xFF1B;</strong></p>
-<p><strong>&#x7EC4;&#x4EF6;&#x5185;&#x8DEF;&#x7531;&#x94A9;&#x5B50;&#xFF1A;beforeRouteEnter(to,from, next)&#x3001;beforeRouteUpdate(to,from, next)&#x3001;beforeRouteLeave(to,from, next)</strong></p>
-<p>&#x6CE8;&#x610F;&#xFF1A;afterEach&#x94A9;&#x5B50;&#x4E2D;&#x53C2;&#x6570;&#x6CA1;&#x6709;next</p>
-<hr>
-<h4 id="&#x5168;&#x5C40;&#x7684;">&#x5168;&#x5C40;&#x7684;</h4>
-<p><strong>[beforeEach]</strong>&#xFF1A;&#x5728;&#x8DEF;&#x7531;&#x8DF3;&#x8F6C;&#x524D;&#x89E6;&#x53D1;&#xFF0C;&#x53C2;&#x6570;&#x5305;&#x62EC;to,from,next&#xFF08;&#x53C2;&#x6570;&#x4F1A;&#x5355;&#x72EC;&#x4ECB;&#x7ECD;&#xFF09;&#x4E09;&#x4E2A;&#xFF0C;&#x8FD9;&#x4E2A;&#x94A9;&#x5B50;&#x4F5C;&#x7528;&#x4E3B;&#x8981;&#x662F;&#x7528;&#x4E8E;&#x767B;&#x5F55;&#x9A8C;&#x8BC1;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8DEF;&#x7531;&#x8FD8;&#x6CA1;&#x8DF3;&#x8F6C;&#x63D0;&#x524D;&#x544A;&#x77E5;&#xFF0C;&#x4EE5;&#x514D;&#x8DF3;&#x8F6C;&#x4E86;&#x518D;&#x901A;&#x77E5;&#x5C31;&#x4E3A;&#x65F6;&#x5DF2;&#x665A;&#x3002;</p>
-<p><strong>[beforeResolve]</strong>&#xFF1A;&#x8FD9;&#x4E2A;&#x94A9;&#x5B50;&#x548C;beforeEach&#x7C7B;&#x4F3C;&#xFF0C;&#x4E5F;&#x662F;&#x8DEF;&#x7531;&#x8DF3;&#x8F6C;&#x524D;&#x89E6;&#x53D1;&#xFF0C;&#x53C2;&#x6570;&#x4E5F;&#x662F;to,from,next&#x4E09;&#x4E2A;&#xFF0C;&#x548C;beforeEach&#x533A;&#x522B;&#x5B98;&#x65B9;&#x89E3;&#x91CA;&#x4E3A;&#xFF1A;&#x533A;&#x522B;&#x662F;&#x5728;&#x5BFC;&#x822A;&#x88AB;&#x786E;&#x8BA4;&#x4E4B;&#x524D;&#xFF0C;<strong>&#x540C;&#x65F6;&#x5728;&#x6240;&#x6709;&#x7EC4;&#x4EF6;&#x5185;&#x5B88;&#x536B;&#x548C;&#x5F02;&#x6B65;&#x8DEF;&#x7531;&#x7EC4;&#x4EF6;&#x88AB;&#x89E3;&#x6790;&#x4E4B;&#x540E;</strong>&#xFF0C;&#x89E3;&#x6790;&#x5B88;&#x536B;&#x5C31;&#x88AB;&#x8C03;&#x7528;&#x3002;</p>
-<p><strong>[afterEach]</strong>&#xFF1A;&#x548C;beforeEach&#x76F8;&#x53CD;&#xFF0C;&#x5B83;&#x662F;&#x5728;&#x8DEF;&#x7531;&#x8DF3;&#x8F6C;&#x5B8C;&#x6210;&#x540E;&#x89E6;&#x53D1;&#xFF0C;&#x53C2;&#x6570;&#x5305;&#x62EC;to,from&#x6CA1;&#x6709;&#x4E86;next,&#x5B83;&#x53D1;&#x751F;&#x5728;beforeEach&#x548C;beforeResolve&#x4E4B;&#x540E;&#xFF0C;beforeRouteEnter&#xFF08;&#x7EC4;&#x4EF6;&#x5185;&#x5B88;&#x536B;&#xFF09;&#x4E4B;&#x524D;&#x3002;</p>
-<hr>
-<h4 id="&#x8DEF;&#x7531;&#x72EC;&#x4EAB;&#x7684;">&#x8DEF;&#x7531;&#x72EC;&#x4EAB;&#x7684;</h4>
-<p><strong>[beforeEnter]</strong>&#xFF1A;&#x548C;beforeEach&#x5B8C;&#x5168;&#x76F8;&#x540C;&#xFF0C;&#x5982;&#x679C;&#x90FD;&#x8BBE;&#x7F6E;&#x5219;&#x5728;beforeEach&#x4E4B;&#x540E;&#x7D27;&#x968F;&#x6267;&#x884C;&#xFF0C;&#x53C2;&#x6570;to&#x3001;from&#x3001;next</p>
-<hr>
-<h4 id="&#x7EC4;&#x4EF6;&#x5185;&#x7684;">&#x7EC4;&#x4EF6;&#x5185;&#x7684;</h4>
-<p><strong>[beforeRouteEnter]</strong>&#xFF1A;&#x8DEF;&#x7531;&#x8FDB;&#x5165;&#x4E4B;&#x524D;&#x8C03;&#x7528;&#xFF0C;&#x53C2;&#x6570;&#x5305;&#x62EC;to&#xFF0C;from&#xFF0C;next&#x3002;&#x8BE5;&#x94A9;&#x5B50;&#x5728;&#x5168;&#x5C40;&#x5B88;&#x536B;beforeEach&#x548C;&#x72EC;&#x4EAB;&#x5B88;&#x536B;beforeEnter&#x4E4B;&#x540E;&#xFF0C;&#x5168;&#x5C40;beforeResolve&#x548C;&#x5168;&#x5C40;afterEach&#x4E4B;&#x524D;&#x8C03;&#x7528;&#xFF0C;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x8BE5;&#x5B88;&#x536B;&#x5185;&#x8BBF;&#x95EE;&#x4E0D;&#x5230;&#x7EC4;&#x4EF6;&#x7684;&#x5B9E;&#x4F8B;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;this&#x4E3A;undefined&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5B83;&#x5728;beforeCreate&#x751F;&#x547D;&#x5468;&#x671F;&#x524D;&#x89E6;&#x53D1;&#x3002;</p>
-<p><strong>[beforeRouteUpdate]</strong> (v 2.2+)&#xFF1A;&#x5728;&#x5F53;&#x524D;&#x8DEF;&#x7531;&#x6539;&#x53D8;&#x65F6;&#xFF0C;&#x5E76;&#x4E14;&#x8BE5;&#x7EC4;&#x4EF6;&#x88AB;&#x590D;&#x7528;&#x65F6;&#x8C03;&#x7528;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;this&#x8BBF;&#x95EE;&#x5B9E;&#x4F8B;&#x3002;&#x53C2;&#x6570;&#x5305;&#x62EC;to&#xFF0C;from&#xFF0C;next&#x3002; what is &#x8DEF;&#x7531;&#x6539;&#x53D8; or what is &#x7EC4;&#x4EF6;&#x88AB;&#x590D;&#x7528;&#xFF1F;</p>
+                                <h1 id="vuecomponent&#x548C;component&#x6807;&#x7B7E;">Vue.component&#x548C;component&#x6807;&#x7B7E;</h1>
 <ul>
-<li>&#x5BF9;&#x4E8E;&#x4E00;&#x4E2A;&#x5E26;&#x6709;&#x52A8;&#x6001;&#x53C2;&#x6570;&#x7684;&#x8DEF;&#x5F84; /foo/:id&#xFF0C;&#x5728; /foo/1 &#x548C; /foo/2 &#x4E4B;&#x95F4;&#x8DF3;&#x8F6C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x7EC4;&#x4EF6;&#x5B9E;&#x4F8B;&#x4F1A;&#x88AB;&#x590D;&#x7528;&#xFF0C;&#x8BE5;&#x5B88;&#x536B;&#x4F1A;&#x88AB;&#x8C03;&#x7528;</li>
-<li>&#x5F53;&#x524D;&#x8DEF;&#x7531;query&#x53D8;&#x66F4;&#x65F6;&#xFF0C;&#x8BE5;&#x5B88;&#x536B;&#x4F1A;&#x88AB;&#x8C03;&#x7528;</li>
+<li><h2 id="vuecomponent">Vue.component</h2>
+</li>
 </ul>
-<p><strong>[beforeRouteLeave]</strong>&#xFF1A;&#x5BFC;&#x822A;&#x79BB;&#x5F00;&#x8BE5;&#x7EC4;&#x4EF6;&#x7684;&#x5BF9;&#x5E94;&#x8DEF;&#x7531;&#x65F6;&#x8C03;&#x7528;&#xFF0C;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x7EC4;&#x4EF6;&#x5B9E;&#x4F8B;<code>this</code>&#xFF0C;&#x53C2;&#x6570;&#x5305;&#x62EC;to&#xFF0C;from&#xFF0C;next&#x3002;</p>
-<pre><code class="lang-javascript">&lt;template&gt;
-  ...
-&lt;/template&gt;
-export default{
-  data(){
-    //...
-  },
-  beforeRouteEnter (to, from, next) {
-    // &#x5728;&#x6E32;&#x67D3;&#x8BE5;&#x7EC4;&#x4EF6;&#x7684;&#x5BF9;&#x5E94;&#x8DEF;&#x7531;&#x88AB; confirm &#x524D;&#x8C03;&#x7528;
-    // &#x4E0D;&#xFF01;&#x80FD;&#xFF01;&#x83B7;&#x53D6;&#x7EC4;&#x4EF6;&#x5B9E;&#x4F8B; `this`
-    // &#x56E0;&#x4E3A;&#x5F53;&#x5B88;&#x536B;&#x6267;&#x884C;&#x524D;&#xFF0C;&#x7EC4;&#x4EF6;&#x5B9E;&#x4F8B;&#x8FD8;&#x6CA1;&#x88AB;&#x521B;&#x5EFA;
-  },
-  beforeRouteUpdate (to, from, next) {
-    // &#x5728;&#x5F53;&#x524D;&#x8DEF;&#x7531;&#x6539;&#x53D8;&#xFF0C;&#x4F46;&#x662F;&#x8BE5;&#x7EC4;&#x4EF6;&#x88AB;&#x590D;&#x7528;&#x65F6;&#x8C03;&#x7528;
-    // &#x4E3E;&#x4F8B;&#x6765;&#x8BF4;&#xFF0C;&#x5BF9;&#x4E8E;&#x4E00;&#x4E2A;&#x5E26;&#x6709;&#x52A8;&#x6001;&#x53C2;&#x6570;&#x7684;&#x8DEF;&#x5F84; /foo/:id&#xFF0C;&#x5728; /foo/1 &#x548C; /foo/2 &#x4E4B;&#x95F4;&#x8DF3;&#x8F6C;&#x7684;&#x65F6;&#x5019;&#xFF0C;
-    // &#x7531;&#x4E8E;&#x4F1A;&#x6E32;&#x67D3;&#x540C;&#x6837;&#x7684; Foo &#x7EC4;&#x4EF6;&#xFF0C;&#x56E0;&#x6B64;&#x7EC4;&#x4EF6;&#x5B9E;&#x4F8B;&#x4F1A;&#x88AB;&#x590D;&#x7528;&#x3002;&#x800C;&#x8FD9;&#x4E2A;&#x94A9;&#x5B50;&#x5C31;&#x4F1A;&#x5728;&#x8FD9;&#x4E2A;&#x60C5;&#x51B5;&#x4E0B;&#x88AB;&#x8C03;&#x7528;&#x3002;
-    // &#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x7EC4;&#x4EF6;&#x5B9E;&#x4F8B; `this`
-  },
-  beforeRouteLeave (to, from, next) {
-    // &#x5BFC;&#x822A;&#x79BB;&#x5F00;&#x8BE5;&#x7EC4;&#x4EF6;&#x7684;&#x5BF9;&#x5E94;&#x8DEF;&#x7531;&#x65F6;&#x8C03;&#x7528;
-    // &#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x7EC4;&#x4EF6;&#x5B9E;&#x4F8B; `this`
-  }
+<blockquote>
+<p><em>/ &#x8FD9;&#x91CC;&#x6709;&#x4E2A;template&#x7684;&#x5C0F;&#x7EC6;&#x8282;&#xFF0C;template&#x7684;&#x6700;&#x5916;&#x5C42;&#x4E00;&#x5B9A;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x6807;&#x7B7E;&#x5305;&#x8D77;&#x6765;&#xFF0C;&#x5E76;&#x6CA1;&#x6709;&#x5144;&#x5F1F;&#x8282;&#x70B9; /</em>
+<em>/ &#x7531;&#x4E8E;-&#x6709;&#x5751;&#xFF0C;&#x6240;&#x4EE5;&#x5C11;&#x7528;-&#xFF0C;&#x7528;&#x5176;&#x4ED6;&#x5F62;&#x5F0F;&#x5B9A;&#x4E49;&#x5C5E;&#x6027;prop /</em></p>
+</blockquote>
+<p>html</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;app&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Global_choi</span> <span class="hljs-attr">:country</span>=<span class="hljs-string">&quot;mycountry&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Global_choi</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Part_choi</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Part_choi</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">another_part_choi</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">another_part_choi</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">country</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">country</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<p>js</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// &#x5168;&#x5C40;&#x6CE8;&#x518C;</span>
+Vue.component(<span class="hljs-string">&apos;Global_choi&apos;</span>,{
+    template: <span class="hljs-string">`&lt;div&gt;i am Global_choi from {{ country }}&lt;/div&gt;`</span>,
+    props: [<span class="hljs-string">&apos;country&apos;</span>]
+})
+
+<span class="hljs-comment">// &#x5916;&#x90E8;&#x5B9A;&#x4E49;&#x5C40;&#x90E8;&#x7EC4;&#x4EF6;&#xFF0C;&#x518D;&#x5728;&#x5C40;&#x90E8;&#x8C03;&#x7528;</span>
+<span class="hljs-keyword">var</span> another_part_choi = {
+      template: <span class="hljs-string">`&lt;div&gt;i am another_part_choi&lt;/div&gt;`</span>
 }
-&lt;style&gt;
-  ...
-&lt;/style&gt;
+
+<span class="hljs-comment">// &#x4E00;&#x4E2A;&#x5B50;&#x7EC4;&#x4EF6;</span>
+<span class="hljs-keyword">var</span> city = {
+      template: <span class="hljs-string">`&lt;div&gt;city: city&lt;/div&gt;`</span>,
+}
+
+<span class="hljs-comment">// &#x4E00;&#x4E2A;&#x7236;&#x7EC4;&#x4EF6;</span>
+<span class="hljs-keyword">var</span> country = {
+    template: <span class="hljs-string">`&lt;div&gt;country: country&lt;city&gt;&lt;/city&gt;&lt;/div&gt;`</span>,
+    components: {
+          <span class="hljs-string">&quot;city&quot;</span>: city
+    }
+}
+
+<span class="hljs-comment">/* &#x8FD9;&#x91CC;&#x6709;&#x4E2A;template&#x7684;&#x5C0F;&#x7EC6;&#x8282;&#xFF0C;template&#x7684;&#x6700;&#x5916;&#x5C42;&#x4E00;&#x5B9A;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x6807;&#x7B7E;&#x5305;&#x8D77;&#x6765;&#xFF0C;&#x5E76;&#x6CA1;&#x6709;&#x5144;&#x5F1F;&#x8282;&#x70B9; */</span>
+<span class="hljs-comment">/* &#x7531;&#x4E8E;-&#x6709;&#x5751;&#xFF0C;&#x6240;&#x4EE5;&#x5C11;&#x7528;-&#xFF0C;&#x7528;&#x5176;&#x4ED6;&#x5F62;&#x5F0F;&#x5B9A;&#x4E49;&#x5C5E;&#x6027;prop */</span>
+
+<span class="hljs-keyword">var</span> vm=<span class="hljs-keyword">new</span> Vue({
+    el: <span class="hljs-string">&apos;#app&apos;</span>,
+    components:{ <span class="hljs-comment">// &#x5C40;&#x90E8;&#x6CE8;&#x518C;&#x7EC4;&#x4EF6;</span>
+        <span class="hljs-string">&quot;Part_choi&quot;</span>: {
+              template: <span class="hljs-string">`&lt;div&gt;i am Part_choi&lt;/div&gt;`</span>
+        },
+        <span class="hljs-string">&quot;another_part_choi&quot;</span>: another_part_choi,
+        <span class="hljs-string">&quot;country&quot;</span>: country
+    },
+    data:{  <span class="hljs-comment">//&#x6570;&#x636E;</span>
+          mycountry: <span class="hljs-string">&apos;China&apos;</span>
+    }
+})
+</code></pre>
+<hr>
+<ul>
+<li><h2 id="component-&#x6807;&#x7B7E;">component &#x6807;&#x7B7E;</h2>
+</li>
+</ul>
+<p>&#x8BE5;&#x6807;&#x7B7E;&#x662F;Vue&#x6846;&#x67B6;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x6807;&#x7B7E;&#xFF0C;&#x5B83;&#x7684;&#x7528;&#x9014;&#x5C31;&#x662F;&#x53EF;&#x4EE5;<strong>&#x52A8;&#x6001;&#x7ED1;&#x5B9A;&#x6211;&#x4EEC;&#x7684;&#x7EC4;&#x4EF6;</strong>&#xFF0C;&#x6839;&#x636E;&#x6570;&#x636E;&#x7684;&#x4E0D;&#x540C;&#x66F4;&#x6362;&#x4E0D;&#x540C;&#x7684;&#x7EC4;&#x4EF6;&#x3002; </p>
+<p>&#x7ED3;&#x6784;:     <strong><component :is="&#x7EC4;&#x4EF6;&#x53D8;&#x91CF;&#xFF0C;&#x5B9A;&#x4E49;&#x5728;data&#x91CC;"></component></strong></p>
+<p><strong>### example ###</strong></p>
+<p>html</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;change_component&quot;</span>&gt;</span>change_component<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">component</span> <span class="hljs-attr">:is</span>=<span class="hljs-string">&quot;now_component&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">component</span>&gt;</span>
+</code></pre>
+<p>js</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// &#x5B9A;&#x4E49;&#x4E09;&#x4E2A;&#x7EC4;&#x4EF6;</span>
+<span class="hljs-keyword">var</span> componentA={
+  template:<span class="hljs-string">`&lt;div&gt;I&apos;m componentA&lt;/div&gt;`</span>
+}
+<span class="hljs-keyword">var</span> componentB={
+  template:<span class="hljs-string">`&lt;div&gt;I&apos;m componentB&lt;/div&gt;`</span>
+}
+<span class="hljs-keyword">var</span> componentC={
+  template:<span class="hljs-string">`&lt;div&gt;I&apos;m componentC&lt;/div&gt;`</span>
+}
+
+<span class="hljs-comment">// &#x5B9E;&#x4F8B;</span>
+<span class="hljs-keyword">var</span> vm=<span class="hljs-keyword">new</span> Vue({
+  el: <span class="hljs-string">&apos;#app&apos;</span>,
+  components:{
+    <span class="hljs-string">&quot;componentA&quot;</span>:componentA,
+    <span class="hljs-string">&quot;componentB&quot;</span>:componentB,
+    <span class="hljs-string">&quot;componentC&quot;</span>:componentC,
+  },
+  data:{  <span class="hljs-comment">//&#x6570;&#x636E;</span>
+    now_component: <span class="hljs-string">&apos;componentA&apos;</span>
+  },
+  methods:{  <span class="hljs-comment">//&#x65B9;&#x6CD5;</span>
+    <span class="hljs-comment">//js&#x65B9;&#x6CD5;&#x5199;&#x5728;&#x8FD9;&#x91CC;</span>
+    change_component: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+      <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.now_component == <span class="hljs-string">&apos;componentA&apos;</span>){ <span class="hljs-keyword">this</span>.now_component = <span class="hljs-string">&apos;componentB&apos;</span> }
+      <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.now_component == <span class="hljs-string">&apos;componentB&apos;</span>){ <span class="hljs-keyword">this</span>.now_component = <span class="hljs-string">&apos;componentC&apos;</span> }
+      <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.now_component == <span class="hljs-string">&apos;componentC&apos;</span>){ <span class="hljs-keyword">this</span>.now_component = <span class="hljs-string">&apos;componentA&apos;</span> }
+    }
+  },
+})
 </code></pre>
 
                                 
@@ -947,12 +1001,12 @@ export default{
 
             
                 
-                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Vue · 杂">
+                <a href="16-Vue的生命周期.html" class="navigation navigation-prev " aria-label="Previous page: Vue的生命周期">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="11-Vue目录.html" class="navigation navigation-next " aria-label="Next page: Vue目录">
+                <a href="18-vue的this.$refs 打印为undefined.html" class="navigation navigation-next " aria-label="Next page: Vue的This.$Refs 打印为Undefined">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -963,7 +1017,7 @@ export default{
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"路由守卫","level":"1.4.1","depth":2,"next":{"title":"Vue目录","level":"1.4.2","depth":2,"path":"997-Vue · 杂/11-Vue目录.md","ref":"997-Vue · 杂/11-Vue目录.md","articles":[]},"previous":{"title":"Vue · 杂","level":"1.4","depth":1,"path":"997-Vue · 杂/README.md","ref":"997-Vue · 杂/README.md","articles":[{"title":"路由守卫","level":"1.4.1","depth":2,"path":"997-Vue · 杂/10-路由守卫.md","ref":"997-Vue · 杂/10-路由守卫.md","articles":[]},{"title":"Vue目录","level":"1.4.2","depth":2,"path":"997-Vue · 杂/11-Vue目录.md","ref":"997-Vue · 杂/11-Vue目录.md","articles":[]},{"title":"Vue Computed和Watch的区别","level":"1.4.3","depth":2,"path":"997-Vue · 杂/12-vue computed和watch的区别.md","ref":"997-Vue · 杂/12-vue computed和watch的区别.md","articles":[]},{"title":"Vue.Directive 自定义指令","level":"1.4.4","depth":2,"path":"997-Vue · 杂/13-Vue.directive 自定义指令.md","ref":"997-Vue · 杂/13-Vue.directive 自定义指令.md","articles":[]},{"title":"Vue.Extend 构造器的延伸","level":"1.4.5","depth":2,"path":"997-Vue · 杂/14-Vue.extend 构造器的延伸.md","ref":"997-Vue · 杂/14-Vue.extend 构造器的延伸.md","articles":[]},{"title":"Vue.Set","level":"1.4.6","depth":2,"path":"997-Vue · 杂/15-Vue.set.md","ref":"997-Vue · 杂/15-Vue.set.md","articles":[]},{"title":"Vue的生命周期","level":"1.4.7","depth":2,"path":"997-Vue · 杂/16-Vue的生命周期.md","ref":"997-Vue · 杂/16-Vue的生命周期.md","articles":[]},{"title":"Vue.Component和Component标签","level":"1.4.8","depth":2,"path":"997-Vue · 杂/17-Vue.component和component标签.md","ref":"997-Vue · 杂/17-Vue.component和component标签.md","articles":[]},{"title":"Vue的This.$Refs 打印为Undefined","level":"1.4.9","depth":2,"path":"997-Vue · 杂/18-vue的this.$refs 打印为undefined.md","ref":"997-Vue · 杂/18-vue的this.$refs 打印为undefined.md","articles":[]},{"title":"时间戳转化为年 月 日 时 分 秒","level":"1.4.10","depth":2,"path":"997-Vue · 杂/19-时间戳转化为年 月 日 时 分 秒.md","ref":"997-Vue · 杂/19-时间戳转化为年 月 日 时 分 秒.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["gesummary","expandable-chapters"],"pluginsConfig":{"gesummary":{},"expandable-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"997-Vue · 杂/10-路由守卫.md","mtime":"2021-03-16T17:08:10.182Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-17T09:45:20.285Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Vue.Component和Component标签","level":"1.4.8","depth":2,"next":{"title":"Vue的This.$Refs 打印为Undefined","level":"1.4.9","depth":2,"path":"997-Vue · 杂/18-vue的this.$refs 打印为undefined.md","ref":"997-Vue · 杂/18-vue的this.$refs 打印为undefined.md","articles":[]},"previous":{"title":"Vue的生命周期","level":"1.4.7","depth":2,"path":"997-Vue · 杂/16-Vue的生命周期.md","ref":"997-Vue · 杂/16-Vue的生命周期.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["gesummary","expandable-chapters"],"pluginsConfig":{"gesummary":{},"expandable-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"997-Vue · 杂/17-Vue.component和component标签.md","mtime":"2021-02-22T06:55:42.642Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-17T09:45:20.285Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
