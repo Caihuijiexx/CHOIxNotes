@@ -3,6 +3,10 @@
 
 
 > ###### computed: 计算属性，watch：侦听属性
+>
+> 1. watch擅长处理的场景：一个数据影响多个数据
+>
+> 2. computed擅长处理的场景：一个数据受多个数据影响
 
 ·
 
@@ -84,7 +88,7 @@ watch: {
 
 这里 watch 的一个特点是，最初绑定的时候是不会执行的，要等到 `firstName` 改变时才执行监听计算。那我们想要一开始就让他最初绑定的时候就执行改怎么办呢？我们需要修改一下我们的 watch 写法，修改过后的 watch 代码如下：
 
-```
+```javascript
 watch: {
   firstName: {
     handler(newName, oldName) {
@@ -111,7 +115,7 @@ watch: {
 
 watch 里面还有一个属性 `deep`，默认值是 `false`，代表是否深度监听，比如我们 data 里有一个`obj`属性：
 
-```
+```vue
 <div>
       <p>obj.a: {{obj.a}}</p>
       <p>obj.a: <input type="text" v-model="obj.a"></p>
@@ -135,9 +139,13 @@ new Vue({
 })
 ```
 
-当我们在在输入框中输入数据视图改变`obj.a`的值时，我们发现是无效的。受现代 JavaScript 的限制 (以及废弃 `Object.observe`)，Vue 不能检测到对象属性的添加或删除。由于 Vue 会在初始化实例时对属性执行 `getter/setter` 转化过程，所以属性必须在 `data` 对象上存在才能让 Vue 转换它，这样才能让它是响应的。
+当我们在输入框中输入数据视图改变`obj.a`的值时，我们发现是无效的。
 
-默认情况下 handler 只监听`obj`这个属性它的引用的变化，我们只有给`obj`赋值的时候它才会监听到，比如我们在 mounted事件钩子函数中对`obj`进行重新赋值：
+受**现代 JavaScript 的限制** (以及废弃 `Object.observe`)，**Vue 不能检测到对象属性的添加或删除**。
+
+由于 Vue 会在初始化实例时对属性执行 `getter/setter` 转化过程，所以属性必须在 `data` 对象上存在才能让 Vue 转换它，这样才能让它是响应的。
+
+**默认情况下 handler 只监听`obj`这个属性它的引用的变**化，我们只有给`obj`赋值的时候它才会监听到，比如我们在 mounted事件钩子函数中对`obj`进行重新赋值：
 
 ```
 mounted: {
