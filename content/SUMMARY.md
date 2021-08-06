@@ -10,6 +10,10 @@
 - [React](3-React/README.md)
 
     - [React基本机制](3-React/11-React基本机制.md)
+    - [JSX语法规则](3-React/12-JSX语法规则.md)
+    - [Es6的Class](3-React/13-es6的class.md)
+    - [类式组件和函数式组件](3-React/14-类式组件和函数式组件.md)
+    - [组件三大属性之State](3-React/15-组件三大属性之state.md)
 - [Practice · 杂](996-Practice · 杂/README.md)
 
     - [DOCTYPE](996-Practice · 杂/11-DOCTYPE.md)
