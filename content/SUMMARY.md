@@ -19,6 +19,7 @@
     - [React的事件处理](3-React/18-React的事件处理.md)
     - [受控组件和非受控组件](3-React/19-受控组件和非受控组件.md)
     - [高阶函数与函数的柯里化](3-React/20-高阶函数与函数的柯里化.md)
+    - [React的生命周期](3-React/21-React的生命周期.md)
 - [Practice · 杂](996-Practice · 杂/README.md)
 
     - [DOCTYPE](996-Practice · 杂/11-DOCTYPE.md)
