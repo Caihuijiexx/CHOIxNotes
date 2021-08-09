@@ -1048,9 +1048,127 @@
                                 <h1 id="react&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;">React&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;</h1>
 <h4 id="&#x751F;&#x547D;&#x5468;&#x671F;&#xFF08;&#x65E7;&#xFF09;">&#x751F;&#x547D;&#x5468;&#x671F;&#xFF08;&#x65E7;&#xFF09;</h4>
 <p><img src="../img/react-life-old.png" alt=""></p>
+<pre><code class="lang-js"><span class="hljs-comment">/*
+  &#xB7;&#xB7;&#xB7; &#x5217;&#x4E3E; &#xB7;&#xB7;&#xB7;
+  &#xB7; constructor (props) {}
+  &#xB7; componentWillMount () {}
+  &#xB7; componentDidMount () {}
+  &#xB7; render () {}
+  &#xB7; componentWillReceiveProps (nextProps) {}
+  &#xB7; shouldComponentUpdate (nextProps, nextState) {
+      return true
+    }
+  &#xB7; componentWillUpdate (nextProps, nextState) {}
+  &#xB7; componentDidUpdate (prevProps, prevState) {}
+  &#xB7; componentWillUnmount () {}
+
+
+  &#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;
+  &#xB7;&#xB7;&#xB7; &#x6309;&#x7EC4;&#x4EF6;&#x5404;&#x65F6;&#x671F;&#x5404;&#x9636;&#x6BB5; &#xB7;&#xB7;&#xB7;
+  &#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;
+  1. &#x521D;&#x59CB;&#x5316;&#x9636;&#x6BB5;: &#x7531;ReactDOM.render()&#x89E6;&#x53D1;---&#x521D;&#x6B21;&#x6E32;&#x67D3;
+            1.    constructor()
+            2.    componentWillMount()
+            3.    render()
+            4.    componentDidMount() =====&gt; &#x5E38;&#x7528;
+                    &#x4E00;&#x822C;&#x5728;&#x8FD9;&#x4E2A;&#x94A9;&#x5B50;&#x4E2D;&#x505A;&#x4E00;&#x4E9B;&#x521D;&#x59CB;&#x5316;&#x7684;&#x4E8B;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;&#x5F00;&#x542F;&#x5B9A;&#x65F6;&#x5668;&#x3001;&#x53D1;&#x9001;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#x3001;&#x8BA2;&#x9605;&#x6D88;&#x606F;
+  2. &#x66F4;&#x65B0;&#x9636;&#x6BB5;: &#x7531;&#x7EC4;&#x4EF6;&#x5185;&#x90E8;this.setSate()&#x6216;&#x7236;&#x7EC4;&#x4EF6;render&#x89E6;&#x53D1;
+                      0.     componentWillReceiveProps() // &#x5F53;&#x7236;&#x7EC4;&#x4EF6;&#x91CD;&#x65B0;&#x6E32;&#x67D3;&#x65F6;&#x8C03;&#x7528;
+            1.    shouldComponentUpdate() // &#x66F4;&#x65B0;&#x9600;&#x95E8;&#xFF0C;&#x4E0D;&#x8C03;&#x7528;&#x65F6;&#x9ED8;&#x8BA4;&#x8FD4;&#x56DE;true
+            2.    componentWillUpdate()
+            3.    render() =====&gt; &#x5FC5;&#x987B;&#x4F7F;&#x7528;&#x7684;&#x4E00;&#x4E2A;
+            4.    componentDidUpdate()
+  3. &#x5378;&#x8F7D;&#x7EC4;&#x4EF6;: &#x7531;ReactDOM.unmountComponentAtNode()&#x89E6;&#x53D1;
+            1.    componentWillUnmount()  =====&gt; &#x5E38;&#x7528;
+                    &#x4E00;&#x822C;&#x5728;&#x8FD9;&#x4E2A;&#x94A9;&#x5B50;&#x4E2D;&#x505A;&#x4E00;&#x4E9B;&#x6536;&#x5C3E;&#x7684;&#x4E8B;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;&#x5173;&#x95ED;&#x5B9A;&#x65F6;&#x5668;&#x3001;&#x53D6;&#x6D88;&#x8BA2;&#x9605;&#x6D88;&#x606F;
+*/</span>
+</code></pre>
 <hr>
 <h4 id="&#x751F;&#x547D;&#x5468;&#x671F;&#xFF08;&#x65B0;&#xFF09;">&#x751F;&#x547D;&#x5468;&#x671F;&#xFF08;&#x65B0;&#xFF09;</h4>
 <p><img src="../img/react-life-new.png" alt=""></p>
+<pre><code class="lang-js"><span class="hljs-comment">/*
+  &#xB7;&#xB7;&#xB7; &#x5217;&#x4E3E; &#xB7;&#xB7;&#xB7;
+  &#xB7; constructor (props) {}
+  &#xB7; static getDerivedStateFromProps (props, state) {
+          // &#x5E94;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x6765;&#x66F4;&#x65B0; state
+          // &#x5982;&#x679C;&#x8FD4;&#x56DE; null &#x5219;&#x4E0D;&#x66F4;&#x65B0;&#x4EFB;&#x4F55;&#x5185;&#x5BB9;
+          return null 
+      }
+  &#xB7; componentDidMount () {}
+  &#xB7; render () {}
+  &#xB7; shouldComponentUpdate (nextProps, nextState) {
+      return true
+    }
+  &#xB7; getSnapshotBeforeUpdate (prevProps, prevState) {
+          // &#x5E94;&#x8FD4;&#x56DE; snapshot &#x7684;&#x503C;&#xFF08;&#x6216; null&#xFF09;
+          // componentDidUpdate&#x7684;&#x7B2C;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#x53EF;&#x4EE5;&#x63A5;&#x5230;&#x8FD9;&#x4E2A; snapshot &#x503C;
+          return snapshot
+      }
+  &#xB7; componentDidUpdate (prevProps, prevState, snapshotValue) {}
+  &#xB7; componentWillUnmount () {}
+
+
+  &#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;
+  &#xB7;&#xB7;&#xB7; &#x6309;&#x7EC4;&#x4EF6;&#x5404;&#x65F6;&#x671F;&#x5404;&#x9636;&#x6BB5; &#xB7;&#xB7;&#xB7;
+  &#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;&#xB7;
+  1. &#x521D;&#x59CB;&#x5316;&#x9636;&#x6BB5;: &#x7531;ReactDOM.render()&#x89E6;&#x53D1;---&#x521D;&#x6B21;&#x6E32;&#x67D3;
+          1.    constructor()
+          2.    getDerivedStateFromProps    // &#x82E5;state&#x7684;&#x503C;&#x5728;&#x4EFB;&#x4F55;&#x65F6;&#x5019;&#x90FD;&#x53D6;&#x51B3;&#x4E8E;props&#xFF0C;&#x90A3;&#x4E48;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;getDerivedStateFromProps
+          3.    render()
+          4.    componentDidMount() =====&gt; &#x5E38;&#x7528;
+                &#x4E00;&#x822C;&#x5728;&#x8FD9;&#x4E2A;&#x94A9;&#x5B50;&#x4E2D;&#x505A;&#x4E00;&#x4E9B;&#x521D;&#x59CB;&#x5316;&#x7684;&#x4E8B;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;&#x5F00;&#x542F;&#x5B9A;&#x65F6;&#x5668;&#x3001;&#x53D1;&#x9001;&#x7F51;&#x7EDC;&#x8BF7;&#x6C42;&#x3001;&#x8BA2;&#x9605;&#x6D88;&#x606F;
+  2. &#x66F4;&#x65B0;&#x9636;&#x6BB5;: &#x7531;&#x7EC4;&#x4EF6;&#x5185;&#x90E8;this.setSate()&#x6216;&#x7236;&#x7EC4;&#x4EF6;&#x91CD;&#x65B0;render&#x89E6;&#x53D1;
+          1.    getDerivedStateFromProps
+          2.    shouldComponentUpdate()
+          3.    render()
+          4.    getSnapshotBeforeUpdate
+          5.    componentDidUpdate()
+  3. &#x5378;&#x8F7D;&#x7EC4;&#x4EF6;: &#x7531;ReactDOM.unmountComponentAtNode()&#x89E6;&#x53D1;
+          1.    componentWillUnmount()  =====&gt; &#x5E38;&#x7528;
+                &#x4E00;&#x822C;&#x5728;&#x8FD9;&#x4E2A;&#x94A9;&#x5B50;&#x4E2D;&#x505A;&#x4E00;&#x4E9B;&#x6536;&#x5C3E;&#x7684;&#x4E8B;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;&#x5173;&#x95ED;&#x5B9A;&#x65F6;&#x5668;&#x3001;&#x53D6;&#x6D88;&#x8BA2;&#x9605;&#x6D88;&#x606F;
+*/</span>
+</code></pre>
+<h4 id="&#x751F;&#x547D;&#x5468;&#x671F;&#x65B0;&#x65E7;&#x5BF9;&#x6BD4;">&#x751F;&#x547D;&#x5468;&#x671F;&#x65B0;&#x65E7;&#x5BF9;&#x6BD4;</h4>
+<pre><code>&#x5C06;&#x4EE5;&#x4E0B;3&#x4E2A;&#x65E7;&#x751F;&#x547D;&#x5468;&#x671F;&#x52A0;&#x4E0A; UNSAFE_ &#x524D;&#x7F00;&#xFF0C;&#x672A;&#x6765;&#x7248;&#x672C;&#x53EF;&#x80FD;&#x4F1A;&#x5E9F;&#x5F03;
+    componentWillMount()
+    componentWillReceiveProps(nextProps)
+    componentWillUpdate(nextProps, nextState)
+
+&#x65B0;&#x589E;2&#x4E2A;&#x65B0;&#x751F;&#x547D;&#x5468;&#x671F;
+  getDerivedStateFromProps(props, state) {
+    // &#x82E5;state&#x503C;&#x5728;&#x4EFB;&#x4F55;&#x65F6;&#x5019;&#x90FD;&#x53D6;&#x51B3;&#x4E8E;props&#x65F6;&#x4F7F;&#x7528;
+    // 
+    // &#x5E94;&#x8BE5;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x6765;&#x66F4;&#x65B0; state
+    // &#x5982;&#x679C;&#x8FD4;&#x56DE;null&#xFF0C;&#x5219;&#x4E0D;&#x66F4;&#x65B0;
+    return null
+  }
+
+  getSnapshotBeforeUpdate(prevProps, prevState){
+      // &#x5728;&#x6700;&#x8FD1;&#x4E00;&#x6B21;&#x6E32;&#x67D3;&#x8F93;&#x51FA;&#xFF08;&#x63D0;&#x4EA4;&#x5230; DOM &#x8282;&#x70B9;&#xFF09;&#x4E4B;&#x524D;&#x8C03;&#x7528;&#x3002;
+      // &#x5B83;&#x4F7F;&#x5F97;&#x7EC4;&#x4EF6;&#x80FD;&#x5728;&#x53D1;&#x751F;&#x66F4;&#x6539;&#x4E4B;&#x524D;&#x4ECE; DOM &#x4E2D;&#x6355;&#x83B7;&#x4E00;&#x4E9B;&#x4FE1;&#x606F;&#xFF08;&#x4F8B;&#x5982;&#xFF0C;&#x6EDA;&#x52A8;&#x4F4D;&#x7F6E;&#xFF09;
+      // 
+      // &#x5E94;&#x8FD4;&#x56DE; snapshot &#x7684;&#x503C;&#xFF08;&#x6216; null&#xFF09;
+    // componentDidUpdate&#x7684;&#x7B2C;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#x53EF;&#x4EE5;&#x63A5;&#x5230;&#x8FD9;&#x4E2A; snapshot &#x503C;
+      return snapshot
+  }
+</code></pre><h4 id="&#x9519;&#x8BEF;&#x5904;&#x7406;">&#x9519;&#x8BEF;&#x5904;&#x7406;</h4>
+<blockquote>
+<p>&#x5F53;&#x6E32;&#x67D3;&#x8FC7;&#x7A0B;&#xFF0C;&#x751F;&#x547D;&#x5468;&#x671F;&#xFF0C;&#x6216;&#x5B50;&#x7EC4;&#x4EF6;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x4E2D;&#x629B;&#x51FA;&#x9519;&#x8BEF;&#x65F6;&#xFF0C;&#x4F1A;&#x8C03;&#x7528;&#x5982;&#x4E0B;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<ul>
+<li><p>static getDerivedStateFromError (error)</p>
+<p>&#x6B64;&#x751F;&#x547D;&#x5468;&#x671F;&#x4F1A;&#x5728;&#x540E;&#x4EE3;&#x7EC4;&#x4EF6;&#x629B;&#x51FA;&#x9519;&#x8BEF;&#x540E;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x5C06;&#x629B;&#x51FA;&#x7684;&#x9519;&#x8BEF;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#xFF0C;&#x5E76;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x503C;&#x4EE5;&#x66F4;&#x65B0; state</p>
+<p>&#x4F1A;&#x5728; <strong>&#x6E32;&#x67D3;&#x9636;&#x6BB5;</strong> &#x8C03;&#x7528;&#xFF0C;&#x56E0;&#x6B64; <strong>&#x4E0D;&#x5141;&#x8BB8;&#x51FA;&#x73B0;&#x526F;&#x4F5C;&#x7528;</strong></p>
+</li>
+</ul>
+<ul>
+<li><p>componentDidCatch (error, info)</p>
+<p>&#x6B64;&#x751F;&#x547D;&#x5468;&#x671F;&#x4F1A;&#x5728;&#x540E;&#x4EE3;&#x7EC4;&#x4EF6;&#x629B;&#x51FA;&#x9519;&#x8BEF;&#x540E;&#x88AB;&#x8C03;&#x7528;&#xFF0C;</p>
+<p>&#x4F1A;&#x5728; <strong>&#x63D0;&#x4EA4;&#x9636;&#x6BB5;</strong> &#x8C03;&#x7528;&#xFF0C;&#x56E0;&#x6B64; <strong>&#x5141;&#x8BB8;&#x51FA;&#x73B0;&#x526F;&#x4F5C;&#x7528;</strong></p>
+</li>
+</ul>
+<p>  error - &#x629B;&#x51FA;&#x7684;&#x9519;&#x8BEF;</p>
+<p>  Info - &#x5E26;&#x6709; componentStack key &#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x5176;&#x4E2D;&#x5305;&#x542B;&#x6709;&#x5173;&#x7EC4;&#x4EF6;&#x5F15;&#x53D1;&#x9519;&#x8BEF;&#x7684;&#x6808;&#x4FE1;&#x606F;</p>
+</blockquote>
 
                                 
                                 </section>
@@ -1094,7 +1212,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"React的生命周期","level":"1.3.11","depth":2,"next":{"title":"Practice · 杂","level":"1.4","depth":1,"path":"996-Practice · 杂/README.md","ref":"996-Practice · 杂/README.md","articles":[{"title":"DOCTYPE","level":"1.4.1","depth":2,"path":"996-Practice · 杂/11-DOCTYPE.md","ref":"996-Practice · 杂/11-DOCTYPE.md","articles":[]},{"title":"Call和Apply","level":"1.4.2","depth":2,"path":"996-Practice · 杂/12-call和apply.md","ref":"996-Practice · 杂/12-call和apply.md","articles":[]},{"title":"Vue3.0和Vue.2.X的响应式性能区别","level":"1.4.3","depth":2,"path":"996-Practice · 杂/13-Vue3.0和Vue.2.x的响应式性能区别.md","ref":"996-Practice · 杂/13-Vue3.0和Vue.2.x的响应式性能区别.md","articles":[]},{"title":"严格模式","level":"1.4.4","depth":2,"path":"996-Practice · 杂/14-严格模式.md","ref":"996-Practice · 杂/14-严格模式.md","articles":[]},{"title":"箭头函数","level":"1.4.5","depth":2,"path":"996-Practice · 杂/15-箭头函数.md","ref":"996-Practice · 杂/15-箭头函数.md","articles":[]},{"title":"闭包","level":"1.4.6","depth":2,"path":"996-Practice · 杂/16-闭包.md","ref":"996-Practice · 杂/16-闭包.md","articles":[]},{"title":"Vue懒加载","level":"1.4.7","depth":2,"path":"996-Practice · 杂/17-vue懒加载.md","ref":"996-Practice · 杂/17-vue懒加载.md","articles":[]},{"title":"模块化","level":"1.4.8","depth":2,"path":"996-Practice · 杂/18-模块化.md","ref":"996-Practice · 杂/18-模块化.md","articles":[]},{"title":"关于 Const 和 Let 声明的变量不在 Window 上","level":"1.4.9","depth":2,"path":"996-Practice · 杂/19-关于 const 和 let 声明的变量不在 window 上.md","ref":"996-Practice · 杂/19-关于 const 和 let 声明的变量不在 window 上.md","articles":[]},{"title":"Hoisting（变量提升）","level":"1.4.10","depth":2,"path":"996-Practice · 杂/20-Hoisting（变量提升）.md","ref":"996-Practice · 杂/20-Hoisting（变量提升）.md","articles":[]},{"title":"ES6 代码转成 ES5 代码","level":"1.4.11","depth":2,"path":"996-Practice · 杂/21-ES6 代码转成 ES5 代码.md","ref":"996-Practice · 杂/21-ES6 代码转成 ES5 代码.md","articles":[]},{"title":"原型和原型链","level":"1.4.12","depth":2,"path":"996-Practice · 杂/22-原型和原型链.md","ref":"996-Practice · 杂/22-原型和原型链.md","articles":[]},{"title":"Function*与Yield","level":"1.4.13","depth":2,"path":"996-Practice · 杂/23-function*与yield.md","ref":"996-Practice · 杂/23-function*与yield.md","articles":[]},{"title":"异步问题","level":"1.4.14","depth":2,"path":"996-Practice · 杂/24-异步问题.md","ref":"996-Practice · 杂/24-异步问题.md","articles":[]},{"title":"防抖与节流","level":"1.4.15","depth":2,"path":"996-Practice · 杂/25-防抖与节流.md","ref":"996-Practice · 杂/25-防抖与节流.md","articles":[]},{"title":"跨域问题","level":"1.4.16","depth":2,"path":"996-Practice · 杂/26-跨域问题.md","ref":"996-Practice · 杂/26-跨域问题.md","articles":[]},{"title":"V If、V Show、V Html","level":"1.4.17","depth":2,"path":"996-Practice · 杂/27-v-if、v-show、v-html.md","ref":"996-Practice · 杂/27-v-if、v-show、v-html.md","articles":[]}]},"previous":{"title":"高阶函数与函数的柯里化","level":"1.3.10","depth":2,"path":"3-React/20-高阶函数与函数的柯里化.md","ref":"3-React/20-高阶函数与函数的柯里化.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["gesummary","expandable-chapters"],"pluginsConfig":{"gesummary":{},"expandable-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"3-React/21-React的生命周期.md","mtime":"2021-08-09T15:56:33.672Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-09T15:56:38.710Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"React的生命周期","level":"1.3.11","depth":2,"next":{"title":"Practice · 杂","level":"1.4","depth":1,"path":"996-Practice · 杂/README.md","ref":"996-Practice · 杂/README.md","articles":[{"title":"DOCTYPE","level":"1.4.1","depth":2,"path":"996-Practice · 杂/11-DOCTYPE.md","ref":"996-Practice · 杂/11-DOCTYPE.md","articles":[]},{"title":"Call和Apply","level":"1.4.2","depth":2,"path":"996-Practice · 杂/12-call和apply.md","ref":"996-Practice · 杂/12-call和apply.md","articles":[]},{"title":"Vue3.0和Vue.2.X的响应式性能区别","level":"1.4.3","depth":2,"path":"996-Practice · 杂/13-Vue3.0和Vue.2.x的响应式性能区别.md","ref":"996-Practice · 杂/13-Vue3.0和Vue.2.x的响应式性能区别.md","articles":[]},{"title":"严格模式","level":"1.4.4","depth":2,"path":"996-Practice · 杂/14-严格模式.md","ref":"996-Practice · 杂/14-严格模式.md","articles":[]},{"title":"箭头函数","level":"1.4.5","depth":2,"path":"996-Practice · 杂/15-箭头函数.md","ref":"996-Practice · 杂/15-箭头函数.md","articles":[]},{"title":"闭包","level":"1.4.6","depth":2,"path":"996-Practice · 杂/16-闭包.md","ref":"996-Practice · 杂/16-闭包.md","articles":[]},{"title":"Vue懒加载","level":"1.4.7","depth":2,"path":"996-Practice · 杂/17-vue懒加载.md","ref":"996-Practice · 杂/17-vue懒加载.md","articles":[]},{"title":"模块化","level":"1.4.8","depth":2,"path":"996-Practice · 杂/18-模块化.md","ref":"996-Practice · 杂/18-模块化.md","articles":[]},{"title":"关于 Const 和 Let 声明的变量不在 Window 上","level":"1.4.9","depth":2,"path":"996-Practice · 杂/19-关于 const 和 let 声明的变量不在 window 上.md","ref":"996-Practice · 杂/19-关于 const 和 let 声明的变量不在 window 上.md","articles":[]},{"title":"Hoisting（变量提升）","level":"1.4.10","depth":2,"path":"996-Practice · 杂/20-Hoisting（变量提升）.md","ref":"996-Practice · 杂/20-Hoisting（变量提升）.md","articles":[]},{"title":"ES6 代码转成 ES5 代码","level":"1.4.11","depth":2,"path":"996-Practice · 杂/21-ES6 代码转成 ES5 代码.md","ref":"996-Practice · 杂/21-ES6 代码转成 ES5 代码.md","articles":[]},{"title":"原型和原型链","level":"1.4.12","depth":2,"path":"996-Practice · 杂/22-原型和原型链.md","ref":"996-Practice · 杂/22-原型和原型链.md","articles":[]},{"title":"Function*与Yield","level":"1.4.13","depth":2,"path":"996-Practice · 杂/23-function*与yield.md","ref":"996-Practice · 杂/23-function*与yield.md","articles":[]},{"title":"异步问题","level":"1.4.14","depth":2,"path":"996-Practice · 杂/24-异步问题.md","ref":"996-Practice · 杂/24-异步问题.md","articles":[]},{"title":"防抖与节流","level":"1.4.15","depth":2,"path":"996-Practice · 杂/25-防抖与节流.md","ref":"996-Practice · 杂/25-防抖与节流.md","articles":[]},{"title":"跨域问题","level":"1.4.16","depth":2,"path":"996-Practice · 杂/26-跨域问题.md","ref":"996-Practice · 杂/26-跨域问题.md","articles":[]},{"title":"V If、V Show、V Html","level":"1.4.17","depth":2,"path":"996-Practice · 杂/27-v-if、v-show、v-html.md","ref":"996-Practice · 杂/27-v-if、v-show、v-html.md","articles":[]}]},"previous":{"title":"高阶函数与函数的柯里化","level":"1.3.10","depth":2,"path":"3-React/20-高阶函数与函数的柯里化.md","ref":"3-React/20-高阶函数与函数的柯里化.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["gesummary","expandable-chapters"],"pluginsConfig":{"gesummary":{},"expandable-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"3-React/21-React的生命周期.md","mtime":"2021-08-09T18:14:22.833Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-09T18:15:41.830Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
